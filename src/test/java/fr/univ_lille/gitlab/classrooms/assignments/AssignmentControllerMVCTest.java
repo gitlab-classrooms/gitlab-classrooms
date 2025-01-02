@@ -174,7 +174,7 @@ class AssignmentControllerMVCTest {
                 .andExpect(model().attributeExists("quizzes"))
                 .andExpect(model().attributeExists("repositories"));
 
-        verify(this.gitlab).getProjectsOfConnectedUser();
+        verify(this.gitlab).getProjectTemplates(any(Classroom.class));
     }
 
     @Test

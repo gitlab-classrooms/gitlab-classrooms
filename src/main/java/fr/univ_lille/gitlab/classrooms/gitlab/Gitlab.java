@@ -17,6 +17,14 @@ import java.util.Optional;
  */
 public interface Gitlab {
 
+    /**
+     * Get project templates for a Classroom. This searches in the Classroom GitLab group for a sub-group named 'templates'.
+     * @param classroom
+     * @return
+     * @throws GitLabApiException
+     */
+    List<Project> getProjectTemplates(Classroom classroom) throws GitLabApiException;
+
     List<Project> getProjectsOfConnectedUser() throws GitLabApiException;
 
     List<Group> getGroupsOfConnectedUser() throws GitLabApiException;

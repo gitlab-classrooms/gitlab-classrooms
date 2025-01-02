@@ -113,7 +113,7 @@ class AssignmentController {
 
         model.addAttribute("quizzes", this.quizService.getAllQuizzes());
 
-        model.addAttribute("repositories", this.gitlab.getProjectsOfConnectedUser());
+        model.addAttribute("repositories", this.gitlab.getProjectTemplates(classroom));
         return "assignments/new";
     }
 
