@@ -12,13 +12,13 @@ import java.util.UUID;
 
 @Controller
 @RolesAllowed("TEACHER")
-public class ArchiveRestController {
+class ArchiveRestController {
 
-    private AssignmentService assignmentService;
+    private final AssignmentService assignmentService;
 
-    private ArchiveAssignmentUseCase archiveAssignmentUseCase;
+    private final ArchiveAssignmentUseCase archiveAssignmentUseCase;
 
-    public ArchiveRestController(AssignmentService assignmentService, ArchiveAssignmentUseCase archiveAssignmentUseCase) {
+    ArchiveRestController(AssignmentService assignmentService, ArchiveAssignmentUseCase archiveAssignmentUseCase) {
         this.assignmentService = assignmentService;
         this.archiveAssignmentUseCase = archiveAssignmentUseCase;
     }

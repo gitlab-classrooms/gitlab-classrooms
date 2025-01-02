@@ -14,13 +14,13 @@ import java.util.stream.Collectors;
 
 @Controller
 @RolesAllowed("TEACHER")
-public class ExerciseAssignmentRestController {
+class ExerciseAssignmentRestController {
 
-    private AssignmentService assignmentService;
+    private final AssignmentService assignmentService;
 
-    private GitLabApi gitlab;
+    private final GitLabApi gitlab;
 
-    public ExerciseAssignmentRestController(AssignmentService assignmentService, GitLabApi gitlab) {
+    ExerciseAssignmentRestController(AssignmentService assignmentService, GitLabApi gitlab) {
         this.assignmentService = assignmentService;
         this.gitlab = gitlab;
     }
