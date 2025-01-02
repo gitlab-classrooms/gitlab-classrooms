@@ -42,6 +42,13 @@
 
 @layer components {
 
+    .text-input {
+        @apply text-white;
+        @apply bg-dark-4;
+
+        @apply border-dark-9 rounded-2xl;
+    }
+
     .btn-primary {
         @apply flex items-center justify-center rounded-lg bg-primary-100;
         @apply hover:bg-primary-80;
