@@ -25,4 +25,16 @@ public interface ClassroomService {
     void createClassroom(String classroomName, Long parentGitlabGroupId, ClassroomUser teacher) throws GitLabApiException;
 
     void saveClassroom(Classroom classroom);
+
+    /**
+     * Archives a classroom
+     * @param classroom the classroom to archive
+     */
+    void archiveClassroom(Classroom classroom);
+
+    /**
+     * Unarchives a classroom
+     * @param classroom the classroom to unarchive
+     */
+    void unarchiveClassroom(Classroom classroom);
 }

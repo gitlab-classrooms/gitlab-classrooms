@@ -24,12 +24,16 @@ class ClassroomServiceImpl implements ClassroomService {
 
     @Override
     public List<Classroom> getAllClassrooms() {
-        return this.classroomRepository.findAll();
+        return this.classroomRepository.findAll().stream()
+                .filter(classroom -> !classroom.isArchived())
+                .toList();
     }
 
     @Override
     public List<Classroom> getAllJoinedClassrooms(ClassroomUser student) {
-        return this.classroomRepository.findClassroomByStudentsContains(student);
+        return this.classroomRepository.findClassroomByStudentsContains(student).stream()
+                .filter(classroom -> !classroom.isArchived())
+                .toList();
     }
 
     @Override
@@ -59,6 +63,20 @@ class ClassroomServiceImpl implements ClassroomService {
 
     @Override
     public void saveClassroom(Classroom classroom) {
+        this.classroomRepository.save(classroom);
+    }
+
+    @Transactional
+    @Override
+    public void archiveClassroom(Classroom classroom) {
+        classroom.setArchived(true);
+        this.classroomRepository.save(classroom);
+    }
+
+    @Transactional
+    @Override
+    public void unarchiveClassroom(Classroom classroom) {
+        classroom.setArchived(false);
         this.classroomRepository.save(classroom);
     }
 }

@@ -28,20 +28,41 @@ class ClassroomServiceImplTest {
     private Gitlab gitlab;
 
     @Test
-    void getAllClassrooms_shouldReturnAllClassrooms() {
+    void getAllClassrooms_shouldReturnAllNonArchivedClassrooms() {
+        var activeClassroom = new Classroom();
+        var archiveClassroom = new Classroom();
+        archiveClassroom.setArchived(true);
+        var allClassrooms = java.util.List.of(activeClassroom, archiveClassroom);
+
+        when(classroomRepository.findAll()).thenReturn(allClassrooms);
+
         var classrooms = classroomService.getAllClassrooms();
 
-        assertThat(classrooms).isNotNull();
+        assertThat(classrooms).isNotNull()
+                .hasSize(1)
+                .contains(activeClassroom)
+                .doesNotContain(archiveClassroom);
 
         verify(classroomRepository).findAll();
     }
 
     @Test
-    void getAllJoinedClassrooms_shouldReturnAllJoinedClassrooms() {
+    void getAllJoinedClassrooms_shouldReturnAllNonArchivedJoinedClassrooms() {
         var student = new ClassroomUser();
+
+        var activeClassroom = new Classroom();
+        var archiveClassroom = new Classroom();
+        archiveClassroom.setArchived(true);
+        var allJoinedClassrooms = java.util.List.of(activeClassroom, archiveClassroom);
+
+        when(classroomRepository.findClassroomByStudentsContains(student)).thenReturn(allJoinedClassrooms);
+
         var classrooms = classroomService.getAllJoinedClassrooms(student);
 
-        assertThat(classrooms).isNotNull();
+        assertThat(classrooms).isNotNull()
+                .hasSize(1)
+                .contains(activeClassroom)
+                .doesNotContain(archiveClassroom);
 
         verify(classroomRepository).findClassroomByStudentsContains(student);
     }
@@ -79,5 +100,28 @@ class ClassroomServiceImplTest {
                 .satisfies(it -> {
                     assertThat(it.getTeachers()).contains(teacher);
                 });
+    }
+
+    @Test
+    void archiveClassroom_shouldSetArchivedToTrue() {
+        var classroom = new Classroom();
+        assertThat(classroom.isArchived()).isFalse();
+
+        classroomService.archiveClassroom(classroom);
+
+        assertThat(classroom.isArchived()).isTrue();
+        verify(classroomRepository).save(classroom);
+    }
+
+    @Test
+    void unarchiveClassroom_shouldSetArchivedToFalse() {
+        var classroom = new Classroom();
+        classroom.setArchived(true);
+        assertThat(classroom.isArchived()).isTrue();
+
+        classroomService.unarchiveClassroom(classroom);
+
+        assertThat(classroom.isArchived()).isFalse();
+        verify(classroomRepository).save(classroom);
     }
 }

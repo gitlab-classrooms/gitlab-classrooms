@@ -19,6 +19,8 @@ public class Classroom {
 
     private Long gitlabGroupId;
 
+    private boolean archived = false;
+
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<ClassroomUser> teachers = new HashSet<>();
 
@@ -95,5 +97,13 @@ public class Classroom {
 
     public void setGitlabGroupId(Long gitlabGroupId) {
         this.gitlabGroupId = gitlabGroupId;
+    }
+
+    public boolean isArchived() {
+        return archived;
+    }
+
+    public void setArchived(boolean archived) {
+        this.archived = archived;
     }
 }
