@@ -19,7 +19,7 @@
                     <div class="sm:col-span-4">
                         <label for="classroomName" class="block text-sm font-medium leading-6 text-gray-900">Classroom name</label>
                         <div class="mt-2">
-                            <input type="text" name="classroomName" id="classroomName" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="">
+                            <input type="text" name="classroomName" id="classroomName" class="text-input" placeholder="">
                         </div>
                         <p class="mt-3 text-sm leading-6 text-gray-600">The Classroom name will be used as a GitLab Group name.</p>
                     </div>
@@ -27,9 +27,9 @@
                     <div class="col-span-full">
                         <label for="parentGitLabGroupId" class="block text-sm font-medium leading-6 text-gray-900">Parent GitLab Group</label>
                         <div class="relative mt-2">
-                            <select id="parentGitLabGroupId" name="parentGitLabGroupId" class="w-full rounded-md border-0 bg-white py-1.5 pl-3 pr-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" role="combobox" aria-controls="options" aria-expanded="false">
-                                <option></option>
-                                <option th:each="group : ${groups}" th:value="${group.id}" th:text="${group.name}">GitLab Group Name</option>
+                            <select id="parentGitLabGroupId" name="parentGitLabGroupId" class="block w-full bg-dark-4 rounded-2xl border-0 px-3 py-3 pr-12 text-white ring-1 ring-inset ring-dark-9 placeholder:text-dark-6 hover:ring-2 hover:ring-inset hover:ring-primary-100 focus:ring-4 focus:ring-inset focus:ring-primary-160 appearance-none" role="combobox" aria-controls="options" aria-expanded="false">
+                                <option value=""></option>
+                                <option th:each="group : ${groups}" th:value="${group.id}" th:text="${group.fullName}">GitLab Group Name</option>
                             </select>
                         </div>
 
