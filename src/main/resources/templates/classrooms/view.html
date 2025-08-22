@@ -27,14 +27,22 @@
             <h5 th:text="${classroom.name}">
                 Classroom name
             </h5>
-            <a type="button"
-               th:if="${gitlabGroupUrl}"
-               th:href="${gitlabGroupUrl}"
-               target="_blank"
-               class="btn-primary">
-                <img src="/icons/gitlab-logo-200.svg" class="h-6 w-6 mr-1.5" alt="gitlab icon"/>
-                Open in GitLab
-            </a>
+            <div class="flex flex-row gap-2">
+                <a type="button"
+                   th:if="${gitlabGroupUrl}"
+                   th:href="${gitlabGroupUrl}"
+                   target="_blank"
+                   class="btn-primary">
+                    <img src="/icons/gitlab-logo-200.svg" class="h-6 w-6 mr-1.5" alt="gitlab icon"/>
+                    Open in GitLab
+                </a>
+                <a type="button"
+                   th:href="@{/classrooms/{classroomId}/archive(classroomId=${classroom.id})}"
+                   class="btn-secondary"
+                   onclick="return confirm('Are you sure you want to archive this classroom?');">
+                    Archive Classroom
+                </a>
+            </div>
 
         </div>
         <div class="mt-5 flex lg:ml-4 lg:mt-0">

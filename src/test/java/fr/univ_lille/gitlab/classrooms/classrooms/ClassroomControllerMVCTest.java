@@ -187,4 +187,24 @@ class ClassroomControllerMVCTest {
         verify(classroomService).joinClassroom(any(), any());
     }
 
+    @Test
+    @WithMockTeacher
+    void archiveClassroom_shouldArchiveAndRedirect_forTeacher() throws Exception {
+        mockMvc.perform(get("/classrooms/" + classroomId + "/archive"))
+                .andDo(print())
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/"));
+
+        verify(classroomService).archiveClassroom(any());
+    }
+
+    @Test
+    @WithMockStudent
+    void archiveClassroom_shouldBeForbidden_forStudent() throws Exception {
+        mockMvc.perform(get("/classrooms/" + classroomId + "/archive"))
+                .andDo(print())
+                .andExpect(status().isForbidden());
+
+        verify(classroomService, never()).archiveClassroom(any());
+    }
 }

@@ -86,4 +86,12 @@ class ClassroomController {
         return "classrooms/joined";
     }
 
+    @GetMapping("/{classroomId}/archive")
+    String archiveClassroom(@PathVariable UUID classroomId) {
+        var classroom = this.classroomService.getClassroom(classroomId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+        this.classroomService.archiveClassroom(classroom);
+        return "redirect:/";
+    }
 }
