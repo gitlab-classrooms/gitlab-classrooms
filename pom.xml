@@ -43,7 +43,7 @@
     <properties>
         <java.version>21</java.version>
 
-        <gitlab4j-api.version>6.0.0-rc.3</gitlab4j-api.version>
+        <gitlab4j-api.version>6.1.0</gitlab4j-api.version>
         <jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
         <archunit.version>1.2.1</archunit.version>
     </properties>
