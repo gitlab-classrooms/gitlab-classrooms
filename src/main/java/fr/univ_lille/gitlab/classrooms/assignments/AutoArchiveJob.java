@@ -15,8 +15,6 @@ public class AutoArchiveJob {
 
     private final ArchiveAssignmentUseCase archiveAssignmentUseCase;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AutoArchiveJob.class.getName());
-
     AutoArchiveJob(AssignmentRepository assignmentRepository, ArchiveAssignmentUseCase archiveAssignmentUseCase) {
         this.assignmentRepository = assignmentRepository;
         this.archiveAssignmentUseCase = archiveAssignmentUseCase;
@@ -24,7 +22,6 @@ public class AutoArchiveJob {
 
     @Scheduled(fixedRate = 5, timeUnit = TimeUnit.MINUTES, initialDelay = 0)
     void autoArchiveAssignments(){
-        LOGGER.info("Auto archiving assignments");
         this.assignmentRepository.findAll()
                 .stream()
                 .filter(it -> it.getStatus()==AssignmentStatus.OPENED)
