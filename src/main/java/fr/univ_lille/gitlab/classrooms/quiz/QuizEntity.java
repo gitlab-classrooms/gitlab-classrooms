@@ -15,6 +15,8 @@ public class QuizEntity {
     @Column(columnDefinition = "TEXT")
     private String markdownContent;
 
+    private boolean archived;
+
     public String getName() {
         return name;
     }
@@ -29,6 +31,14 @@ public class QuizEntity {
 
     public void setMarkdownContent(String markdownContent) {
         this.markdownContent = markdownContent;
+    }
+
+    public boolean isArchived() {
+        return archived;
+    }
+
+    public void setArchived(boolean archived) {
+        this.archived = archived;
     }
 
 }
