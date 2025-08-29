@@ -2,56 +2,29 @@
 <html th:replace="~{layout :: layout('Quiz List', ~{::div} , 'Quiz')}">
 <body>
 
-<!--
-    Created from template : https://tailwindui.com/components/application-ui/lists/grid-lists#component-2beafc928684743ff886c0b164edb126
--->
+<div th:fragment="fragment" class="flex flex-col">
+    <a th:href="@{/quiz/new/edit}" class="btn-primary w-fit">
+        <img src="/icons/plus.svg">
+        <span class="text-white text-base font-medium">New Quiz</span>
+    </a>
+    <ul role="list" class="mt-6 grid grid-cols-1 gap-x-6 gap-y-8 md:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
 
-<div>
-    <div class="border-b border-gray-900/10 pb-6">
-        <a th:href="@{/quiz/new/edit}" class="">
-            <button type="button" class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                <svg class="-ml-0.5 mr-1.5 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
-                </svg>
-                New Quiz
-            </button>
-        </a>
-    </div>
-    <ul role="list" class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-3 xl:gap-x-8">
         <li
                 th:each="quiz : ${quizzes}"
-                class="overflow-hidden rounded-xl border border-gray-200"
+                class="assignment-card"
         >
-            <div class="flex items-center gap-x-4 border-b border-gray-900/5 bg-gray-50 p-6">
-                <div class="h-12 w-12 flex-none rounded-lg bg-white object-cover ring-1 ring-gray-900/10 text-indigo-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8 ml-2 mt-2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
-                    </svg>
+            <a th:href="@{/quiz/{quizName}/edit(quizName=${quiz.name})}" class="assignment-header">
+                <div>
+                    <img src="/icons/pencil-alt.svg" />
                 </div>
-                <a
-                        th:href="@{/quiz/{quizName}/edit(quizName=${quiz.name})}"
-                        th:text="${quiz.name}"
-                        class="text-sm font-medium leading-6 text-gray-900"
-                >
-                    Quiz Name
-                </a>
-            </div>
-            <dl class="-my-3 divide-y divide-gray-100 px-6 py-4 text-sm leading-6">
-                <div class="flex justify-between gap-x-4 py-3">
-                    <dt class="text-gray-800">
-                        <a th:href="@{/quiz/{quizName}/preview(quizName=${quiz.name})}" target="_blank" class="inline-flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-1.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-                            Preview
-                        </a>
-                    </dt>
-                </div>
-            </dl>
+                <span th:text="${quiz.name}">Quiz Name</span>
+            </a>
+            <a th:href="@{/quiz/{quizName}/preview(quizName=${quiz.name})}" target="_blank" class="btn-secondary">
+                <img class="w-6" src="/icons/eye.svg"/>
+                Preview
+            </a>
         </li>
     </ul>
 </div>
-
 
 </body>
