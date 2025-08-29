@@ -18,7 +18,7 @@ class QuizServiceImpl implements QuizService {
 
     @Override
     public List<QuizEntity> getAllQuizzes() {
-        return this.quizRepository.findAll();
+        return this.quizRepository.findAllByArchivedFalse();
     }
 
     @Override

@@ -24,7 +24,7 @@ class QuizEditionController {
 
     @GetMapping("")
     public String listQuiz(Model model) {
-        model.addAttribute("quizzes", this.quizRepository.findAll(Sort.by("name")));
+        model.addAttribute("quizzes", this.quizRepository.findAllByArchivedFalse());
         return QUIZ_LIST_PAGE;
     }
 

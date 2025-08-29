@@ -26,7 +26,7 @@ class QuizServiceImplTest {
 
         assertThat(quizzes).isNotNull();
 
-        verify(quizRepository).findAll();
+        verify(quizRepository).findAllByArchivedFalse();
     }
 
     @Test
