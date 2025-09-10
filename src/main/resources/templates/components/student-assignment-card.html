@@ -27,7 +27,7 @@
     <div th:if="${studentAssignment.submissionDate!=null}" class="flex justify-between items-center">
         <div class="pl-2" th:text="'Score : ' + ${studentAssignment.score} + ' / ' + ${studentAssignment.maxScore}">8/10</div>
         <form
-                th:action="@{/assignments/{assignmentId}/students/{studentId}/reset(assignmentId=${studentAssignment.assignment.id}, studentId=${student.name})}" method="post">
+                th:action="@{/assignments/{assignmentId}/students/{studentId}/reset(assignmentId=${studentAssignment.assignment.id}, studentId=${studentAssignment.student.name})}" method="post">
             <button type="submit" class="btn-secondary">
                 Reset Grade
             </button>
