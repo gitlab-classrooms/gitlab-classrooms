@@ -19,8 +19,8 @@
 <div th:fragment="student-assignment-card(studentAssignment)" class="assignment-card">
     <a th:href="${link}" class="assignment-header">
         <div>
-            <img th:if="${studentAssignment.assignment.type.name == 'EXERCISE'}" src="/icons/brackets.svg" />
-            <img th:if="${studentAssignment.assignment.type.name == 'QUIZ'}" src="/icons/pencil-alt.svg" />
+            <img th:if="${studentAssignment.assignment.type.name == 'EXERCISE'}" src="/icons/brackets.svg" alt="Exercise icon" />
+            <img th:if="${studentAssignment.assignment.type.name == 'QUIZ'}" src="/icons/pencil-alt.svg" alt="Quiz icon"/>
         </div>
         <span th:text="${studentAssignment.assignment.name}">Exercise 1</span>
     </a>
@@ -38,7 +38,7 @@
         th:href="${studentAssignment.gitlabProjectUrl}"
         target="_blank" class="btn-primary "
     >
-        <img src="/icons/gitlab-logo-200.svg">
+        <img src="/icons/gitlab-logo-200.svg" alt="GitLab icon">
         Open in GitLab
     </a>
     <a
@@ -46,7 +46,7 @@
             th:href="@{/assignments/{assignmentId}/quiz(assignmentId=${studentAssignment.assignment.id})}"
             target="_blank" class="btn-primary"
     >
-        <img src="/icons/link-alt-2.svg">
+        <img src="/icons/link-alt-2.svg" alt="Link icon">
         Answer Quiz
     </a>
 </div>
