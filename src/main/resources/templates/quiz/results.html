@@ -37,71 +37,74 @@
         </p>
         <p class="text-sm inline-flex">
           Les questions auxquelles vous avez répondu correctement sont surlignées en
-          <span class="rounded-md bg-green-50 text-sm font-medium text-green-900 inline-flex items-center ml-1">
+          <span class="rounded-md bg-green-light px-1 text-sm font-medium text-green-dark inline-flex items-center ml-1">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            vert
+            &nbsp;vert
           </span>,
           les autres en
-          <span class="rounded-md bg-red-50 text-sm font-medium text-red-900 inline-flex items-center ml-1">
+          <span class="rounded-md bg-red-light px-1 text-sm font-medium inline-flex items-center ml-1">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            rouge
+            &nbsp;rouge
           </span>.
         </p>
       </div>
     </div>
   </div>
 
-  <section
-          class="border-b border-gray-900/10 pt-12 pb-12"
-          th:each="question : ${quiz.questions}">
-    <fieldset >
+    <ol class="list-decimal">
+        <li
+                class="border-b border-dark-4 pt-12 pb-12 "
+                th:each="question : ${quiz.questions}">
 
-      <!-- titre de la question -->
-      <legend class="rounded-md bg-green-50 p-4 text-sm font-medium text-green-900 flex items-center" th:if="${question.correct}">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-1.5">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-        <span th:text="${question.text}">Question text</span>
-      </legend>
+            <!-- titre de la question -->
+            <span class="ml-2 text-base rounded-lg bg-green-light p-2 font-medium text-green-dark inline-flex items-center" th:if="${question.correct}">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                &nbsp;
+                <span th:text="${question.text}">Question text</span>
+            </span>
 
-      <legend class="rounded-md bg-red-50 p-4 text-sm font-medium text-red-900 flex items-center" th:if="${!question.correct}">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-1.5">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-        <span th:text="${question.text}">Question text</span>
-      </legend>
+            <span class="ml-2 text-base rounded-lg bg-red-light p-2 font-medium inline-flex items-center" th:if="${!question.correct}">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                &nbsp;
+                <span th:text="${question.text}">Question text</span>
+            </span>
 
-      <div class="mt-6 space-y-6" th:if="${question.questionType.name() == 'SINGLE_CHOICE'}">
-        <div th:each="answer : ${question.answers}" class="flex items-center gap-x-3">
-          <input th:id="${answer.id}" type="radio" disabled th:checked="${answer.selected}" class="h-4 w-4 border-gray-300 text-indigo-300 focus:ring-indigo-300">
-          <label th:for="${answer.id}" class="block text-sm font-medium leading-6 text-gray-900" th:text="${answer.text}">Answer text</label>
-        </div>
-      </div>
+            <fieldset >
+                <div class="mt-6 space-y-6" th:if="${question.questionType.name() == 'SINGLE_CHOICE'}">
+                    <div th:each="answer : ${question.answers}" class="flex items-center gap-x-3">
+                        <input th:id="${answer.id}" th:name="${question.id}" th:value="${answer.id}" type="radio" th:checked="${answer.selected}" class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                        <label th:for="${answer.id}" class="block text-sm font-medium leading-6 text-gray-900" th:text="${answer.text}">Answer text</label>
+                    </div>
+                </div>
+                <div class="mt-6 space-y-6" th:if="${question.questionType.name() == 'MULTIPLE_CHOICE'}">
+                    <div th:each="answer : ${question.answers}" class="flex items-center gap-x-3">
+                        <input th:id="${answer.id}" th:name="${answer.id}" type="checkbox" th:checked="${answer.selected}" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                        <label th:for="${answer.id}" class="block text-sm font-medium leading-6 text-gray-900" th:text="${answer.text}">Answer text</label>
+                    </div>
+                </div>
+                <div class="mt-6 space-y-6" th:if="${question.questionType.name() == 'FULL_TEXT'}">
+                    <div th:each="answer : ${question.answers}" class="flex items-center gap-x-3">
+                        <div class="flex items-center gap-x-3">
+                            <input th:id="${answer.id}" th:name="${answer.id}" th:value="${answer.inputText}" type="text" class="block rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                    </div>
+                </div>
 
-      <div class="mt-6 space-y-6" th:if="${question.questionType.name() == 'MULTIPLE_CHOICE'}">
-        <div th:each="answer : ${question.answers}" class="flex items-center gap-x-3">
-          <input th:id="${answer.id}" th:name="${answer.id}" type="checkbox" disabled th:checked="${answer.selected}" class="h-4 w-4 rounded border-gray-300 text-indigo-300 focus:ring-indigo-300">
-          <label th:for="${answer.id}" class="block text-sm font-medium leading-6 text-gray-900" th:text="${answer.text}">Answer text</label>
-        </div>
-      </div>
+                <div class="mt-6 space-y-6 rounded-md bg-gray-100 p-4 text-sm font-medium text-gray-800 border-l-4 border-gray-800" th:if="${! question.explanation.empty}" th:utext="${question.explanation}">
+                    Question explanation
+                </div>
+            </fieldset>
+        </li>
 
-      <div class="mt-6 space-y-6" th:if="${question.questionType.name() == 'FULL_TEXT'}">
-        <div th:each="answer : ${question.answers}" class="flex items-center gap-x-3">
-          <input th:id="${answer.id}" th:name="${answer.id}" disabled th:value="${answer.inputText}" type="text" class="block rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-        </div>
-      </div>
-
-      <div class="mt-6 space-y-6 rounded-md bg-gray-100 p-4 text-sm font-medium text-gray-800 border-l-4 border-gray-800" th:if="${! question.explanation.empty}" th:utext="${question.explanation}">
-        Question explanation
-      </div>
-
-    </fieldset>
-
-  </section>
+    </ol>
 
 </section>
 </body>
