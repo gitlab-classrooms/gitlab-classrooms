@@ -42,7 +42,7 @@
                 <div class="bg-dark-3 rounded-3xl p-6" th:if="${ submissionCount > 0}">
                     <dt class="text-dark-6">Average</dt>
                     <dd class="mt-1 text-6xl font-bold text-white">
-                        <span th:text="${#aggregates.avg(exerciseResults.?[submissionDate != null].![score])}">10</span> /
+                        <span th:text="${#numbers.formatDecimal(#aggregates.avg(exerciseResults.?[submissionDate != null].![score]),1,2)}">10</span> /
                         <span th:text="${exerciseResults.?[submissionDate != null][0].maxScore}">10</span>
                     </dd>
                 </div>
