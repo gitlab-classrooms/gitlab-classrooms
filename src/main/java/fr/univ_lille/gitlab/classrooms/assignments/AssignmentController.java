@@ -47,6 +47,7 @@ class AssignmentController {
     String viewAssignment(@PathVariable UUID assignmentId, Model model) {
         var assignment = this.assignmentService.getAssignment(assignmentId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         var assignmentResults = this.assignmentService.getAssignmentResults(assignment);
+        model.addAttribute("assignment", assignment);
 
         if (assignment.getType() == AssignmentType.QUIZ) {
             var quizAssignment = (QuizAssignment) assignment;

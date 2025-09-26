@@ -11,6 +11,11 @@
                 <h5><span th:text="${exercise.name}">name</span> results.</h5>
                 <p class="text-dark-7 text-m mt-2">List of all exercise submissions.</p>
             </div>
+            <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+                <a class="btn-secondary" th:href="@{/assignments/{assignmentId}/export.csv(assignmentId=${assignment.id})}">
+                    Download CSV
+                </a>
+            </div>
         </div>
 
         <!-- empty state -->
@@ -38,7 +43,7 @@
                     <dt class="text-dark-6">Average</dt>
                     <dd class="mt-1 text-6xl font-bold text-white">
                         <span th:text="${#aggregates.avg(exerciseResults.?[submissionDate != null].![score])}">10</span> /
-                        <span th:text="${exerciseResults.?[submissionDate != null][0].maxScore}">10<∕span>
+                        <span th:text="${exerciseResults.?[submissionDate != null][0].maxScore}">10</span>
                     </dd>
                 </div>
             </dl>

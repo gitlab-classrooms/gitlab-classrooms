@@ -11,6 +11,11 @@
                 <h5><span th:text="${quiz.name}">name</span> results.</h5>
                 <p class="text-dark-7 text-m mt-2">List of all quiz submissions.</p>
             </div>
+            <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+                <a class="btn-secondary" th:href="@{/assignments/{assignmentId}/export.csv(assignmentId=${assignment.id})}">
+                    Download CSV
+                </a>
+            </div>
         </div>
 
         <!-- empty state -->
