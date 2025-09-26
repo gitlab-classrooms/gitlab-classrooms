@@ -12,6 +12,20 @@
             await navigator.clipboard.writeText(url);
         }
 
+        async function copyStudentsEmailsToClipboard() {
+            try {
+                const emails = Array.from(document.querySelectorAll('.student-card .email span'))
+                    .map(el => (el.textContent || '').trim())
+                    .filter(e => e.length > 0);
+                if (emails.length === 0) {
+                    return;
+                }
+                await navigator.clipboard.writeText(emails.join(', '));
+            } catch (e) {
+                // no-op: clipboard may not be available, silently ignore
+            }
+        }
+
         function filterStudentsFeature() {
             return {
                 filter: '',
@@ -62,13 +76,22 @@
             </p>
         </div>
 
-        <button type="button"
-                onclick="copyToClipboard(this)"
-                th:data-clipboard="@{/classrooms/{classroomId}/join(classroomId=${classroom.id})}"
-                class="btn-primary">
-            <img src="/images/link-icon-white.svg" class="w-6 h-6 mr-1.5 text-white" alt="link icon"/>
-            Copy Join Link
-        </button>
+        <div class="flex flex-row gap-2 items-center">
+            <button type="button"
+                    onclick="copyToClipboard(this)"
+                    th:data-clipboard="@{/classrooms/{classroomId}/join(classroomId=${classroom.id})}"
+                    class="btn-primary">
+                <img src="/images/link-icon-white.svg" class="w-6 h-6 mr-1.5 text-white" alt="link icon"/>
+                Copy Join Link
+            </button>
+
+            <button type="button"
+                    onclick="copyStudentsEmailsToClipboard()"
+                    class="btn-secondary">
+                <img src="/icons/send.svg" class="w-6 h-6 mr-1.5" alt="copy emails icon"/>
+                Copy Students Emails
+            </button>
+        </div>
 
         <div>
             <div class="relative rounded-2xl">
