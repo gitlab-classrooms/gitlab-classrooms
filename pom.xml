@@ -46,6 +46,7 @@
         <gitlab4j-api.version>6.1.0</gitlab4j-api.version>
         <jacoco-maven-plugin.version>0.8.13</jacoco-maven-plugin.version>
         <archunit.version>1.4.1</archunit.version>
+        <junit-jupiter.version>6.0.0</junit-jupiter.version>
     </properties>
 
     <dependencies>
