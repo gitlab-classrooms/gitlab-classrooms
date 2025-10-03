@@ -25,8 +25,6 @@ public interface Gitlab {
      */
     List<Project> getProjectTemplates(Classroom classroom) throws GitLabApiException;
 
-    List<Project> getProjectsOfConnectedUser() throws GitLabApiException;
-
     List<Group> getGroupsOfConnectedUser() throws GitLabApiException;
 
     URI getGroupURI(Classroom classroom) throws GitLabApiException;

@@ -40,11 +40,6 @@ class GitlabImpl implements Gitlab {
     }
 
     @Override
-    public List<Project> getProjectsOfConnectedUser() throws GitLabApiException {
-        return this.gitLabApi.getProjectApi().getMemberProjects();
-    }
-
-    @Override
     public List<Group> getGroupsOfConnectedUser() throws GitLabApiException {
         return this.gitLabApi.getGroupApi().getGroups();
     }

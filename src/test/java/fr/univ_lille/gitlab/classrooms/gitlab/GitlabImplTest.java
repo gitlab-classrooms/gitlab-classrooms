@@ -36,13 +36,6 @@ class GitlabImplTest {
     private GitlabApiFactory gitlabApiFactory;
 
     @Test
-    void getProjectsOfConnectedUser_shouldListMemberProjects() throws GitLabApiException {
-        gitlab.getProjectsOfConnectedUser();
-
-        verify(gitLabApi.getProjectApi()).getMemberProjects();
-    }
-
-    @Test
     void getGroupsOfConnectedUser_shouldListUserGroups() throws GitLabApiException {
         gitlab.getGroupsOfConnectedUser();
 
