@@ -1,6 +1,6 @@
 package fr.univ_lille.gitlab.classrooms.assignments;
 
-import fr.univ_lille.gitlab.classrooms.classrooms.Classroom;
+import fr.univ_lille.gitlab.classrooms.domain.classrooms.Classroom;
 import fr.univ_lille.gitlab.classrooms.users.ClassroomUser;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;

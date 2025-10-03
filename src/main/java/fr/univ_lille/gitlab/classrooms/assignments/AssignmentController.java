@@ -1,6 +1,6 @@
 package fr.univ_lille.gitlab.classrooms.assignments;
 
-import fr.univ_lille.gitlab.classrooms.classrooms.ClassroomService;
+import fr.univ_lille.gitlab.classrooms.domain.classrooms.ClassroomService;
 import fr.univ_lille.gitlab.classrooms.gitlab.GitLabException;
 import fr.univ_lille.gitlab.classrooms.gitlab.Gitlab;
 import fr.univ_lille.gitlab.classrooms.quiz.QuizService;

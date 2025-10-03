@@ -1,7 +1,7 @@
 package fr.univ_lille.gitlab.classrooms.adapters.jpa;
 
-import fr.univ_lille.gitlab.classrooms.classrooms.Classroom;
-import fr.univ_lille.gitlab.classrooms.classrooms.ClassroomRepository;
+import fr.univ_lille.gitlab.classrooms.domain.classrooms.Classroom;
+import fr.univ_lille.gitlab.classrooms.domain.classrooms.ClassroomRepository;
 import fr.univ_lille.gitlab.classrooms.users.ClassroomUser;
 import org.springframework.stereotype.Component;
 

@@ -1,6 +1,5 @@
-package fr.univ_lille.gitlab.classrooms.classrooms;
+package fr.univ_lille.gitlab.classrooms.domain.classrooms;
 
-import fr.univ_lille.gitlab.classrooms.adapters.jpa.ClassroomEntity;
 import fr.univ_lille.gitlab.classrooms.gitlab.Gitlab;
 import fr.univ_lille.gitlab.classrooms.users.ClassroomUser;
 import fr.univ_lille.gitlab.classrooms.users.WithMockStudent;

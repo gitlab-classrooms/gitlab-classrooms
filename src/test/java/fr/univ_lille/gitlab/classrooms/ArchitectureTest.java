@@ -25,6 +25,13 @@ class ArchitectureTest {
             .bePackagePrivate();
 
     @ArchTest
+    final ArchRule nothing_should_depend_on_jpa_adapter = noClasses()
+            .that()
+            .resideInAPackage("fr.univ_lille.gitlab.classrooms.domain..")
+            .should()
+            .dependOnClassesThat().resideInAPackage("fr.univ_lille.gitlab.classrooms.adapters.jpa");
+
+    @ArchTest
     final ArchRule service_interfaces_are_exposed_as_public = classes()
             .that()
             .haveNameMatching(".*Service")

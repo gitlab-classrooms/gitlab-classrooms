@@ -1,8 +1,7 @@
 package fr.univ_lille.gitlab.classrooms.export;
 
-import fr.univ_lille.gitlab.classrooms.adapters.jpa.ClassroomEntity;
-import fr.univ_lille.gitlab.classrooms.classrooms.Classroom;
-import fr.univ_lille.gitlab.classrooms.classrooms.ClassroomService;
+import fr.univ_lille.gitlab.classrooms.domain.classrooms.Classroom;
+import fr.univ_lille.gitlab.classrooms.domain.classrooms.ClassroomService;
 import fr.univ_lille.gitlab.classrooms.users.WithMockStudent;
 import fr.univ_lille.gitlab.classrooms.users.WithMockTeacher;
 import org.junit.jupiter.api.Test;

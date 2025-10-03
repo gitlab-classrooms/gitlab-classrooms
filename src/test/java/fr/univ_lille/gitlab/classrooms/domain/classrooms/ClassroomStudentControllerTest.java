@@ -1,6 +1,5 @@
-package fr.univ_lille.gitlab.classrooms.classrooms;
+package fr.univ_lille.gitlab.classrooms.domain.classrooms;
 
-import fr.univ_lille.gitlab.classrooms.adapters.jpa.ClassroomEntity;
 import fr.univ_lille.gitlab.classrooms.assignments.AssignmentService;
 import fr.univ_lille.gitlab.classrooms.assignments.StudentAssignment;
 import fr.univ_lille.gitlab.classrooms.assignments.StudentExerciseAssignment;
