@@ -1,5 +1,6 @@
-package fr.univ_lille.gitlab.classrooms.assignments;
+package fr.univ_lille.gitlab.classrooms.mvc.assignments;
 
+import fr.univ_lille.gitlab.classrooms.assignments.StudentAssignmentService;
 import fr.univ_lille.gitlab.classrooms.users.ClassroomUser;
 import fr.univ_lille.gitlab.classrooms.users.ClassroomUserService;
 import jakarta.annotation.security.RolesAllowed;
@@ -14,17 +15,17 @@ import java.util.Optional;
 import java.util.UUID;
 
 /**
- * View Controller that manages all operations a Student or Teacher can do on a StudentAssignment.
+ * View Controller that manages reset grade operation a Student or Teacher can do on a StudentAssignment.
  */
 @Controller
 @RequestMapping("/assignments/{assignmentId}/students/{studentId}")
-class StudentAssignmentViewController {
+class StudentAssignmentResetGradeMVCController {
 
     private final StudentAssignmentService studentAssignmentService;
 
     private final ClassroomUserService classroomUserService;
 
-    StudentAssignmentViewController(StudentAssignmentService studentAssignmentService, ClassroomUserService classroomUserService) {
+    StudentAssignmentResetGradeMVCController(StudentAssignmentService studentAssignmentService, ClassroomUserService classroomUserService) {
         this.studentAssignmentService = studentAssignmentService;
         this.classroomUserService = classroomUserService;
     }

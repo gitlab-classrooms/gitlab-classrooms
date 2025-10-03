@@ -1,5 +1,6 @@
-package fr.univ_lille.gitlab.classrooms.assignments;
+package fr.univ_lille.gitlab.classrooms.mvc.assignments;
 
+import fr.univ_lille.gitlab.classrooms.assignments.StudentAssignmentService;
 import fr.univ_lille.gitlab.classrooms.users.WithMockStudent;
 import fr.univ_lille.gitlab.classrooms.users.WithMockTeacher;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,8 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @Sql("/sql/init-test-users.sql")
-class StudentAssignmentViewControllerMVCTest {
-
+class StudentAssignmentResetGradeMVCControllerMVCTest {
 
     @Autowired
     private MockMvc mockMvc;
