@@ -23,7 +23,7 @@ public class ArchiveAssignmentUseCase {
         this.gitlab = gitlab;
     }
 
-    void archive(Assignment assignment){
+    public void archive(Assignment assignment){
         LOGGER.info("Archiving assignment {}", assignment.getId());
         var studentAssignments = this.studentAssignmentRepository.findAllByAssignment(assignment);
         studentAssignments.stream()
@@ -32,7 +32,7 @@ public class ArchiveAssignmentUseCase {
                     try {
                         this.gitlab.archiveProject(studentExerciseAssignment);
                     } catch (GitLabException e) {
-                        System.out.println(e.getMessage());
+                        LOGGER.error("Unable to archive GitLab project {} for student {}", studentExerciseAssignment.getGitlabProjectId(), studentExerciseAssignment.getStudent().getName());
                     }
                 });
 
