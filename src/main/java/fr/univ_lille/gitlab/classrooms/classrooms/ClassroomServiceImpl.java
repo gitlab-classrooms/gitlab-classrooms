@@ -1,6 +1,5 @@
 package fr.univ_lille.gitlab.classrooms.classrooms;
 
-import fr.univ_lille.gitlab.classrooms.adapters.jpa.ClassroomEntity;
 import fr.univ_lille.gitlab.classrooms.gitlab.Gitlab;
 import fr.univ_lille.gitlab.classrooms.users.ClassroomUser;
 import jakarta.transaction.Transactional;
@@ -31,20 +30,22 @@ class ClassroomServiceImpl implements ClassroomService {
     }
 
     @Override
-    public List<ClassroomEntity> getAllJoinedClassrooms(ClassroomUser student) {
+    public List<Classroom> getAllJoinedClassrooms(ClassroomUser student) {
         return this.classroomRepository.findClassroomByStudentsContains(student).stream()
                 .filter(classroom -> !classroom.isArchived())
                 .toList();
     }
 
     @Override
-    public Optional<ClassroomEntity> getClassroom(UUID uuid) {
+    // FIXME ugly fix to no session, should be removed after hexagonal refactoring
+    @Transactional
+    public Optional<Classroom> getClassroom(UUID uuid) {
         return this.classroomRepository.findById(uuid);
     }
 
     @Transactional
     @Override
-    public void joinClassroom(ClassroomEntity classroom, ClassroomUser student) {
+    public void joinClassroom(Classroom classroom, ClassroomUser student) {
         classroom.join(student);
 
         this.classroomRepository.save(classroom);
@@ -53,7 +54,7 @@ class ClassroomServiceImpl implements ClassroomService {
     @Transactional
     @Override
     public void createClassroom(String classroomName, Long parentGitlabGroupId, ClassroomUser teacher) throws GitLabApiException {
-        var classroom = new ClassroomEntity();
+        var classroom = new Classroom();
         classroom.setName(classroomName);
         classroom.addTeacher(teacher);
 
@@ -63,20 +64,20 @@ class ClassroomServiceImpl implements ClassroomService {
     }
 
     @Override
-    public void saveClassroom(ClassroomEntity classroom) {
+    public void saveClassroom(Classroom classroom) {
         this.classroomRepository.save(classroom);
     }
 
     @Transactional
     @Override
-    public void archiveClassroom(ClassroomEntity classroom) {
+    public void archiveClassroom(Classroom classroom) {
         classroom.setArchived(true);
         this.classroomRepository.save(classroom);
     }
 
     @Transactional
     @Override
-    public void unarchiveClassroom(ClassroomEntity classroom) {
+    public void unarchiveClassroom(Classroom classroom) {
         classroom.setArchived(false);
         this.classroomRepository.save(classroom);
     }

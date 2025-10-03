@@ -14,5 +14,5 @@ interface StudentExerciceAssignmentRepository extends JpaRepository<StudentExerc
 
     Optional<StudentExerciseAssignment> findByAssignmentAndStudent(Assignment assignment, ClassroomUser student);
 
-    List<StudentExerciseAssignment> findByAssignmentClassroomAndStudent(ClassroomEntity classroom, ClassroomUser student);
+    List<StudentExerciseAssignment> findByAssignmentClassroomIdAndStudent(UUID classroomId, ClassroomUser student);
 }

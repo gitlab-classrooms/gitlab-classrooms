@@ -1,6 +1,7 @@
 package fr.univ_lille.gitlab.classrooms.assignments;
 
 import fr.univ_lille.gitlab.classrooms.adapters.jpa.ClassroomEntity;
+import fr.univ_lille.gitlab.classrooms.classrooms.Classroom;
 import fr.univ_lille.gitlab.classrooms.gitlab.GitLabException;
 import fr.univ_lille.gitlab.classrooms.users.ClassroomUser;
 import jakarta.transaction.Transactional;
@@ -21,12 +22,12 @@ public interface AssignmentService {
     List<StudentAssignment> getAssignmentResults(Assignment assignment);
 
     @Transactional
-    Assignment createQuizAssignment(ClassroomEntity classroom, String assignmentName, String quizName);
+    Assignment createQuizAssignment(Classroom classroom, String assignmentName, String quizName);
 
     @Transactional
-    Assignment createExerciseAssignment(ClassroomEntity classroom, String assignmentName, String repositoryId) throws GitLabApiException;
+    Assignment createExerciseAssignment(Classroom classroom, String assignmentName, String repositoryId) throws GitLabApiException;
 
     StudentAssignment getAssignmentResultsForStudent(Assignment assignment, ClassroomUser student);
 
-    List<StudentAssignment> getAllStudentAssignmentsForAClassroom(ClassroomEntity classroom, ClassroomUser student);
+    List<StudentAssignment> getAllStudentAssignmentsForAClassroom(Classroom classroom, ClassroomUser student);
 }

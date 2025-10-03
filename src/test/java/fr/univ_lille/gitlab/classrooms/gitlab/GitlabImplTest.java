@@ -2,6 +2,7 @@ package fr.univ_lille.gitlab.classrooms.gitlab;
 
 import fr.univ_lille.gitlab.classrooms.assignments.ExerciseAssignment;
 import fr.univ_lille.gitlab.classrooms.adapters.jpa.ClassroomEntity;
+import fr.univ_lille.gitlab.classrooms.classrooms.Classroom;
 import fr.univ_lille.gitlab.classrooms.users.ClassroomRole;
 import fr.univ_lille.gitlab.classrooms.users.ClassroomUser;
 import org.gitlab4j.api.GitLabApi;
@@ -50,7 +51,7 @@ class GitlabImplTest {
 
     @Test
     void getGroupURI_shouldGetTheURI_forAGivenClassroom() throws GitLabApiException {
-        var classroom = new ClassroomEntity();
+        var classroom = new Classroom();
         classroom.setGitlabGroupId(12L);
 
         var group = new Group();
@@ -65,7 +66,7 @@ class GitlabImplTest {
 
     @Test
     void createGroup_shouldCreateAGroup_forAGivenClassroom() throws GitLabApiException{
-        var classroom = new ClassroomEntity();
+        var classroom = new Classroom();
         classroom.setName("Test classroom");
 
         var group = new Group();
@@ -88,7 +89,7 @@ class GitlabImplTest {
 
     @Test
     void createGroup_shouldCreateAGroup_forAGivenExerciseAssignment() throws GitLabApiException{
-        var classroom = new ClassroomEntity();
+        var classroom = new Classroom();
         classroom.setName("Test classroom");
         classroom.setGitlabGroupId(12L);
 

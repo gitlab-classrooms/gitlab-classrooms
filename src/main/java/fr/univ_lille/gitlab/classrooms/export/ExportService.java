@@ -1,6 +1,7 @@
 package fr.univ_lille.gitlab.classrooms.export;
 
 import fr.univ_lille.gitlab.classrooms.adapters.jpa.ClassroomEntity;
+import fr.univ_lille.gitlab.classrooms.classrooms.Classroom;
 
 import java.util.List;
 
@@ -10,6 +11,6 @@ import java.util.List;
  */
 public interface ExportService {
 
-    List<ExportServiceImpl.StudentRepository> listStudentRepositories(ClassroomEntity classroom);
+    List<ExportServiceImpl.StudentRepository> listStudentRepositories(Classroom classroom);
 
 }

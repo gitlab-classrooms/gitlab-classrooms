@@ -51,8 +51,8 @@ class ClassroomServiceImplTest {
     void getAllJoinedClassrooms_shouldReturnAllNonArchivedJoinedClassrooms() {
         var student = new ClassroomUser();
 
-        var activeClassroom = new ClassroomEntity();
-        var archiveClassroom = new ClassroomEntity();
+        var activeClassroom = new Classroom();
+        var archiveClassroom = new Classroom();
         archiveClassroom.setArchived(true);
         var allJoinedClassrooms = java.util.List.of(activeClassroom, archiveClassroom);
 
@@ -73,7 +73,7 @@ class ClassroomServiceImplTest {
         var student = new ClassroomUser();
         student.setName("luke.skywalker");
 
-        var classroom = new ClassroomEntity();
+        var classroom = new Classroom();
         classroom.setGitlabGroupId(12L);
 
         classroomService.joinClassroom(classroom, student);
@@ -90,7 +90,7 @@ class ClassroomServiceImplTest {
 
         classroomService.createClassroom("Test classroom", 12L, teacher);
 
-        var classroomCaptor = ArgumentCaptor.forClass(ClassroomEntity.class);
+        var classroomCaptor = ArgumentCaptor.forClass(Classroom.class);
 
         verify(gitlab).createGroup(classroomCaptor.capture(), eq(Optional.of(12L)));
 
@@ -105,7 +105,7 @@ class ClassroomServiceImplTest {
 
     @Test
     void archiveClassroom_shouldSetArchivedToTrue() {
-        var classroom = new ClassroomEntity();
+        var classroom = new Classroom();
         assertThat(classroom.isArchived()).isFalse();
 
         classroomService.archiveClassroom(classroom);
@@ -116,7 +116,7 @@ class ClassroomServiceImplTest {
 
     @Test
     void unarchiveClassroom_shouldSetArchivedToFalse() {
-        var classroom = new ClassroomEntity();
+        var classroom = new Classroom();
         classroom.setArchived(true);
         assertThat(classroom.isArchived()).isTrue();
 

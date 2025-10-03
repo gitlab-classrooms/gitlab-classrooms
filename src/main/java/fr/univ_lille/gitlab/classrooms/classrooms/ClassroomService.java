@@ -1,6 +1,5 @@
 package fr.univ_lille.gitlab.classrooms.classrooms;
 
-import fr.univ_lille.gitlab.classrooms.adapters.jpa.ClassroomEntity;
 import fr.univ_lille.gitlab.classrooms.users.ClassroomUser;
 import org.gitlab4j.api.GitLabApiException;
 
@@ -17,25 +16,25 @@ public interface ClassroomService {
      * @param student the student
      * @return a list of classrooms
      */
-    List<ClassroomEntity> getAllJoinedClassrooms(ClassroomUser student);
+    List<Classroom> getAllJoinedClassrooms(ClassroomUser student);
 
-    Optional<ClassroomEntity> getClassroom(UUID uuid);
+    Optional<Classroom> getClassroom(UUID uuid);
 
-    void joinClassroom(ClassroomEntity classroom, ClassroomUser student);
+    void joinClassroom(Classroom classroom, ClassroomUser student);
 
     void createClassroom(String classroomName, Long parentGitlabGroupId, ClassroomUser teacher) throws GitLabApiException;
 
-    void saveClassroom(ClassroomEntity classroom);
+    void saveClassroom(Classroom classroom);
 
     /**
      * Archives a classroom
      * @param classroom the classroom to archive
      */
-    void archiveClassroom(ClassroomEntity classroom);
+    void archiveClassroom(Classroom classroom);
 
     /**
      * Unarchives a classroom
      * @param classroom the classroom to unarchive
      */
-    void unarchiveClassroom(ClassroomEntity classroom);
+    void unarchiveClassroom(Classroom classroom);
 }

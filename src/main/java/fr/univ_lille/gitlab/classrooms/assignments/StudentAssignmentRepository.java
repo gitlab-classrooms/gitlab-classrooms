@@ -15,7 +15,7 @@ interface StudentAssignmentRepository extends JpaRepository<StudentAssignment, U
 
     StudentAssignment findByAssignmentAndStudent(Assignment assignment, ClassroomUser student);
 
-    List<StudentAssignment> findByAssignmentClassroomAndStudent(ClassroomEntity classroom, ClassroomUser student);
+    List<StudentAssignment> findByAssignmentClassroomIdAndStudent(UUID classroomId, ClassroomUser student);
 
     Optional<StudentAssignment> findByAssignmentIdAndStudent(UUID assignmentId, ClassroomUser student);
 }

@@ -1,6 +1,5 @@
 package fr.univ_lille.gitlab.classrooms.classrooms;
 
-import fr.univ_lille.gitlab.classrooms.adapters.jpa.ClassroomEntity;
 import fr.univ_lille.gitlab.classrooms.users.ClassroomUser;
 
 import java.util.Collection;
@@ -12,9 +11,9 @@ public interface ClassroomRepository {
 
     Collection<Classroom> findAll();
 
-    List<ClassroomEntity> findClassroomByStudentsContains(ClassroomUser student);
+    List<Classroom> findClassroomByStudentsContains(ClassroomUser student);
 
-    Optional<ClassroomEntity> findById(UUID uuid);
+    Optional<Classroom> findById(UUID uuid);
 
-    ClassroomEntity save(ClassroomEntity classroom);
+    Classroom save(Classroom classroom);
 }

@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 
 /**
- * Utility mapper to convert persistence ClassroomEntity to domain Classroom.
+ * Utility mapper to convert between persistence ClassroomEntity and domain Classroom.
  */
 @Component
 public class ClassroomEntityMapper {
@@ -39,5 +39,35 @@ public class ClassroomEntityMapper {
         classroom.setAssignments(assignments);
 
         return classroom;
+    }
+
+    public ClassroomEntity toEntity(Classroom classroom) {
+        if (classroom == null) {
+            return null;
+        }
+        var entity = new ClassroomEntity();
+        entity.setId(classroom.getId());
+        entity.setName(classroom.getName());
+        entity.setGitlabUrl(classroom.getGitlabUrl());
+        entity.setGitlabGroupId(classroom.getGitlabGroupId());
+        entity.setArchived(classroom.isArchived());
+
+        // Copy teachers and students defensively
+        var teachers = classroom.getTeachers() == null ? new HashSet<ClassroomUser>() : new HashSet<>(classroom.getTeachers());
+        entity.setTeachers(teachers);
+
+        var students = classroom.getStudents() == null ? new HashSet<ClassroomUser>() : new HashSet<>(classroom.getStudents());
+        entity.setStudents(students);
+
+        // Map assignments ensuring back-reference is set
+        if (classroom.getAssignments() != null) {
+            for (Assignment assignment : classroom.getAssignments()) {
+                if (assignment != null) {
+                    entity.addAssignment(assignment);
+                }
+            }
+        }
+
+        return entity;
     }
 }

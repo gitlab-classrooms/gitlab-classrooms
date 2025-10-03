@@ -33,17 +33,22 @@ class ClassroomAdapter implements ClassroomRepository {
     }
 
     @Override
-    public List<ClassroomEntity> findClassroomByStudentsContains(ClassroomUser student) {
-        return jpaRepository.findClassroomByStudentsContains(student);
+    public List<Classroom> findClassroomByStudentsContains(ClassroomUser student) {
+        return jpaRepository.findClassroomByStudentsContains(student)
+                .stream().map(classroomEntityMapper::toClassroom)
+                .toList();
     }
 
     @Override
-    public Optional<ClassroomEntity> findById(UUID uuid) {
-        return jpaRepository.findById(uuid);
+    public Optional<Classroom> findById(UUID uuid) {
+        return jpaRepository.findById(uuid)
+                .map(classroomEntityMapper::toClassroom);
     }
 
     @Override
-    public ClassroomEntity save(ClassroomEntity classroom) {
-        return jpaRepository.save(classroom);
+    public Classroom save(Classroom classroom) {
+        var entity = classroomEntityMapper.toEntity(classroom);
+        jpaRepository.save(entity);
+        return classroomEntityMapper.toClassroom(entity);
     }
 }

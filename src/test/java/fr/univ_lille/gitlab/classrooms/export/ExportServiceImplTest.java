@@ -3,6 +3,7 @@ package fr.univ_lille.gitlab.classrooms.export;
 import fr.univ_lille.gitlab.classrooms.assignments.StudentAssignmentService;
 import fr.univ_lille.gitlab.classrooms.assignments.StudentExerciseAssignment;
 import fr.univ_lille.gitlab.classrooms.adapters.jpa.ClassroomEntity;
+import fr.univ_lille.gitlab.classrooms.classrooms.Classroom;
 import fr.univ_lille.gitlab.classrooms.users.ClassroomRole;
 import fr.univ_lille.gitlab.classrooms.users.ClassroomUser;
 import org.junit.jupiter.api.Test;
@@ -28,7 +29,7 @@ class ExportServiceImplTest {
 
     @Test
     void listStudentRepositories_ForAMultipleStudentsAndExercises() {
-        var classroom = new ClassroomEntity();
+        var classroom = new Classroom();
         classroom.setName("Test Classroom");
         classroom.setId(UUID.randomUUID());
 

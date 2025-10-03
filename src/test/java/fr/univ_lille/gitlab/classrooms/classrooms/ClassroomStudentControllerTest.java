@@ -36,7 +36,7 @@ class ClassroomStudentControllerTest {
 
     @Test
     void showClassroomStudent() {
-        var classroom = new ClassroomEntity();
+        var classroom = new Classroom();
         var classroomId = UUID.randomUUID();
         when(this.classroomService.getClassroom(classroomId)).thenReturn(Optional.of(classroom));
 

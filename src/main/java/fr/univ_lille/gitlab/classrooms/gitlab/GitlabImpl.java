@@ -3,6 +3,7 @@ package fr.univ_lille.gitlab.classrooms.gitlab;
 import fr.univ_lille.gitlab.classrooms.assignments.ExerciseAssignment;
 import fr.univ_lille.gitlab.classrooms.assignments.StudentExerciseAssignment;
 import fr.univ_lille.gitlab.classrooms.adapters.jpa.ClassroomEntity;
+import fr.univ_lille.gitlab.classrooms.classrooms.Classroom;
 import fr.univ_lille.gitlab.classrooms.users.ClassroomUser;
 import org.gitlab4j.api.GitLabApi;
 import org.gitlab4j.api.GitLabApiException;
@@ -30,7 +31,7 @@ class GitlabImpl implements Gitlab {
     }
 
     @Override
-    public List<Project> getProjectTemplates(ClassroomEntity classroom) throws GitLabApiException {
+    public List<Project> getProjectTemplates(Classroom classroom) throws GitLabApiException {
         var group = this.gitLabApi.getGroupApi().getGroup(classroom.getGitlabGroupId());
         var templateGroup = this.gitLabApi.getGroupApi().getGroups(group.getPath()+"/templates");
         if(templateGroup.isEmpty()){
@@ -50,7 +51,7 @@ class GitlabImpl implements Gitlab {
     }
 
     @Override
-    public URI getGroupURI(ClassroomEntity classroom) throws GitLabApiException {
+    public URI getGroupURI(Classroom classroom) throws GitLabApiException {
         var group = this.gitLabApi.getGroupApi().getGroup(classroom.getGitlabGroupId());
         return URI.create(group.getWebUrl());
     }
@@ -74,7 +75,7 @@ class GitlabImpl implements Gitlab {
     }
 
     @Override
-    public void createGroup(ClassroomEntity classroom, Optional<Long> parentGroupId) throws GitLabApiException {
+    public void createGroup(Classroom classroom, Optional<Long> parentGroupId) throws GitLabApiException {
         var classroomName = classroom.getName();
         var groupPath = slugify(classroomName);
 
@@ -90,7 +91,7 @@ class GitlabImpl implements Gitlab {
     }
 
     @Override
-    public void createGroup(ExerciseAssignment exerciseAssignment, ClassroomEntity classroom) throws GitLabApiException {
+    public void createGroup(ExerciseAssignment exerciseAssignment, Classroom classroom) throws GitLabApiException {
         var assignmentName = exerciseAssignment.getName();
         var groupPath = slugify(assignmentName);
 
