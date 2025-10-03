@@ -1,4 +1,4 @@
-package fr.univ_lille.gitlab.classrooms.security;
+package fr.univ_lille.gitlab.classrooms.api;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

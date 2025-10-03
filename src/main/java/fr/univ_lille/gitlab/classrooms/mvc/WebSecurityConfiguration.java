@@ -1,4 +1,4 @@
-package fr.univ_lille.gitlab.classrooms.security;
+package fr.univ_lille.gitlab.classrooms.mvc;
 
 import fr.univ_lille.gitlab.classrooms.users.ClassroomUserService;
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
