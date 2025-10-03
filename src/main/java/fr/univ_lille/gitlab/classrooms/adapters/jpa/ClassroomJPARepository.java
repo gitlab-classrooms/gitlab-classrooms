@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Repository
-public interface ClassroomJPARepository extends JpaRepository<ClassroomEntity, UUID> {
+interface ClassroomJPARepository extends JpaRepository<ClassroomEntity, UUID> {
 
     List<ClassroomEntity> findClassroomByStudentsContains(ClassroomUser student);
 

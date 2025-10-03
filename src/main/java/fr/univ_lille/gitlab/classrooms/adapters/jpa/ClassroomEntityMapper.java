@@ -12,7 +12,7 @@ import java.util.LinkedList;
  * Utility mapper to convert between persistence ClassroomEntity and domain Classroom.
  */
 @Component
-public class ClassroomEntityMapper {
+class ClassroomEntityMapper {
 
     public Classroom toClassroom(ClassroomEntity entity) {
         if (entity == null) {
