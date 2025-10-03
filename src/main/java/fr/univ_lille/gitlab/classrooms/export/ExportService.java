@@ -10,6 +10,8 @@ import java.util.List;
  */
 public interface ExportService {
 
-    List<ExportServiceImpl.StudentRepository> listStudentRepositories(Classroom classroom);
+    record StudentRepository(String studentName, List<String> cloneUrls){}
+
+    List<StudentRepository> listStudentRepositories(Classroom classroom);
 
 }

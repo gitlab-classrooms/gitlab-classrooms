@@ -1,6 +1,7 @@
-package fr.univ_lille.gitlab.classrooms.export;
+package fr.univ_lille.gitlab.classrooms.mvc;
 
 import fr.univ_lille.gitlab.classrooms.domain.classrooms.ClassroomService;
+import fr.univ_lille.gitlab.classrooms.export.ExportService;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.MediaType;

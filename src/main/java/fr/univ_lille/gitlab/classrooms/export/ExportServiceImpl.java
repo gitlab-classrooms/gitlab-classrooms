@@ -21,8 +21,6 @@ class ExportServiceImpl implements ExportService {
         this.assignmentService = assignmentService;
     }
 
-    public record StudentRepository(String studentName, List<String> cloneUrls){}
-
     @Override
     public List<StudentRepository> listStudentRepositories(Classroom classroom) {
         LOGGER.info("Listing student repositories for classroom {} with name {}", classroom.getId(), classroom.getName());

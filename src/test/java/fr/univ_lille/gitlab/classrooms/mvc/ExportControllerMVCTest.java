@@ -1,7 +1,8 @@
-package fr.univ_lille.gitlab.classrooms.export;
+package fr.univ_lille.gitlab.classrooms.mvc;
 
 import fr.univ_lille.gitlab.classrooms.domain.classrooms.Classroom;
 import fr.univ_lille.gitlab.classrooms.domain.classrooms.ClassroomService;
+import fr.univ_lille.gitlab.classrooms.export.ExportService;
 import fr.univ_lille.gitlab.classrooms.users.WithMockStudent;
 import fr.univ_lille.gitlab.classrooms.users.WithMockTeacher;
 import org.junit.jupiter.api.Test;
@@ -71,8 +72,8 @@ class ExportControllerMVCTest {
         when(classroomService.getClassroom(classroomId)).thenReturn(Optional.of(classroom));
 
         var studentRepositories = List.of(
-                new ExportServiceImpl.StudentRepository("Luke", List.of("git@gitlab:luke-repo-1.git", "git@gitlab:luke-repo-2.git")),
-                new ExportServiceImpl.StudentRepository("Leia", List.of("git@gitlab:leia-repo-1.git", "git@gitlab:leia-repo-2.git"))
+                new ExportService.StudentRepository("Luke", List.of("git@gitlab:luke-repo-1.git", "git@gitlab:luke-repo-2.git")),
+                new ExportService.StudentRepository("Leia", List.of("git@gitlab:leia-repo-1.git", "git@gitlab:leia-repo-2.git"))
         );
 
         when(exportService.listStudentRepositories(classroom)).thenReturn(studentRepositories);
