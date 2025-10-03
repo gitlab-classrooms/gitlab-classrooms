@@ -1,6 +1,6 @@
 package fr.univ_lille.gitlab.classrooms.assignments;
 
-import fr.univ_lille.gitlab.classrooms.classrooms.Classroom;
+import fr.univ_lille.gitlab.classrooms.classrooms.ClassroomEntity;
 import fr.univ_lille.gitlab.classrooms.users.ClassroomUser;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -27,7 +27,7 @@ class StudentAssignmentServiceImpl implements StudentAssignmentService {
     }
 
     @Override
-    public List<StudentExerciseAssignment> getAllStudentExerciseAssignmentsForAClassroom(Classroom classroom, ClassroomUser student) {
+    public List<StudentExerciseAssignment> getAllStudentExerciseAssignmentsForAClassroom(ClassroomEntity classroom, ClassroomUser student) {
         return this.studentExerciceAssignmentRepository.findByAssignmentClassroomAndStudent(classroom, student);
     }
 

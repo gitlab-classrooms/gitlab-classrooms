@@ -8,7 +8,8 @@ import java.net.URL;
 import java.util.*;
 
 @Entity
-public class Classroom {
+@Table(name = "classroom")
+public class ClassroomEntity {
 
     @Id
     private UUID id = UUID.randomUUID();
@@ -22,9 +23,11 @@ public class Classroom {
     private boolean archived = false;
 
     @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "classroom_teachers", joinColumns = @JoinColumn(name = "classroom_id"), inverseJoinColumns = @JoinColumn(name = "teachers_name"))
     private Set<ClassroomUser> teachers = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "classroom_students", joinColumns = @JoinColumn(name = "classroom_id"), inverseJoinColumns = @JoinColumn(name = "students_name"))
     private Set<ClassroomUser> students = new HashSet<>();
 
     @OneToMany(mappedBy = "classroom")

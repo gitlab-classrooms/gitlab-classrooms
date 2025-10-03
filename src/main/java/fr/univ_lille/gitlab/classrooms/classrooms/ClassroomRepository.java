@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.UUID;
 
 @Repository
-interface ClassroomRepository extends JpaRepository<Classroom, UUID> {
+interface ClassroomRepository extends JpaRepository<ClassroomEntity, UUID> {
 
-    List<Classroom> findClassroomByStudentsContains(ClassroomUser student);
+    List<ClassroomEntity> findClassroomByStudentsContains(ClassroomUser student);
 
 }

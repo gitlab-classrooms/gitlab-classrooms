@@ -23,27 +23,27 @@ class ClassroomServiceImpl implements ClassroomService {
     }
 
     @Override
-    public List<Classroom> getAllClassrooms() {
+    public List<ClassroomEntity> getAllClassrooms() {
         return this.classroomRepository.findAll().stream()
                 .filter(classroom -> !classroom.isArchived())
                 .toList();
     }
 
     @Override
-    public List<Classroom> getAllJoinedClassrooms(ClassroomUser student) {
+    public List<ClassroomEntity> getAllJoinedClassrooms(ClassroomUser student) {
         return this.classroomRepository.findClassroomByStudentsContains(student).stream()
                 .filter(classroom -> !classroom.isArchived())
                 .toList();
     }
 
     @Override
-    public Optional<Classroom> getClassroom(UUID uuid) {
+    public Optional<ClassroomEntity> getClassroom(UUID uuid) {
         return this.classroomRepository.findById(uuid);
     }
 
     @Transactional
     @Override
-    public void joinClassroom(Classroom classroom, ClassroomUser student) {
+    public void joinClassroom(ClassroomEntity classroom, ClassroomUser student) {
         classroom.join(student);
 
         this.classroomRepository.save(classroom);
@@ -52,7 +52,7 @@ class ClassroomServiceImpl implements ClassroomService {
     @Transactional
     @Override
     public void createClassroom(String classroomName, Long parentGitlabGroupId, ClassroomUser teacher) throws GitLabApiException {
-        var classroom = new Classroom();
+        var classroom = new ClassroomEntity();
         classroom.setName(classroomName);
         classroom.addTeacher(teacher);
 
@@ -62,20 +62,20 @@ class ClassroomServiceImpl implements ClassroomService {
     }
 
     @Override
-    public void saveClassroom(Classroom classroom) {
+    public void saveClassroom(ClassroomEntity classroom) {
         this.classroomRepository.save(classroom);
     }
 
     @Transactional
     @Override
-    public void archiveClassroom(Classroom classroom) {
+    public void archiveClassroom(ClassroomEntity classroom) {
         classroom.setArchived(true);
         this.classroomRepository.save(classroom);
     }
 
     @Transactional
     @Override
-    public void unarchiveClassroom(Classroom classroom) {
+    public void unarchiveClassroom(ClassroomEntity classroom) {
         classroom.setArchived(false);
         this.classroomRepository.save(classroom);
     }

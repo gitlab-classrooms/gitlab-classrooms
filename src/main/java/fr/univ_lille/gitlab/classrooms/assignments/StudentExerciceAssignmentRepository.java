@@ -1,6 +1,6 @@
 package fr.univ_lille.gitlab.classrooms.assignments;
 
-import fr.univ_lille.gitlab.classrooms.classrooms.Classroom;
+import fr.univ_lille.gitlab.classrooms.classrooms.ClassroomEntity;
 import fr.univ_lille.gitlab.classrooms.users.ClassroomUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -14,5 +14,5 @@ interface StudentExerciceAssignmentRepository extends JpaRepository<StudentExerc
 
     Optional<StudentExerciseAssignment> findByAssignmentAndStudent(Assignment assignment, ClassroomUser student);
 
-    List<StudentExerciseAssignment> findByAssignmentClassroomAndStudent(Classroom classroom, ClassroomUser student);
+    List<StudentExerciseAssignment> findByAssignmentClassroomAndStudent(ClassroomEntity classroom, ClassroomUser student);
 }

@@ -1,6 +1,6 @@
 package fr.univ_lille.gitlab.classrooms.export;
 
-import fr.univ_lille.gitlab.classrooms.classrooms.Classroom;
+import fr.univ_lille.gitlab.classrooms.classrooms.ClassroomEntity;
 import fr.univ_lille.gitlab.classrooms.classrooms.ClassroomService;
 import fr.univ_lille.gitlab.classrooms.users.WithMockStudent;
 import fr.univ_lille.gitlab.classrooms.users.WithMockTeacher;
@@ -65,7 +65,7 @@ class ExportControllerMVCTest {
     @Test
     @WithMockTeacher
     void exportCloneClassroomScriptByStudent() throws Exception {
-        var classroom = new Classroom();
+        var classroom = new ClassroomEntity();
         classroom.setName("Test Classroom");
 
         when(classroomService.getClassroom(classroomId)).thenReturn(Optional.of(classroom));

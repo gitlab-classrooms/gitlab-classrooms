@@ -45,7 +45,7 @@ class ClassroomControllerMVCTest {
 
     @BeforeEach
     void setUp() {
-        var classroom = new Classroom();
+        var classroom = new ClassroomEntity();
         classroom.setId(classroomId);
         classroom.setName("ClassroomControllerMVCTest classroom");
         when(classroomService.getClassroom(classroomId)).thenReturn(Optional.of(classroom));

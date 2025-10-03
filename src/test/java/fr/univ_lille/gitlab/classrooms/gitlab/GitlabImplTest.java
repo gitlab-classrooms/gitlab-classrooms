@@ -1,7 +1,7 @@
 package fr.univ_lille.gitlab.classrooms.gitlab;
 
 import fr.univ_lille.gitlab.classrooms.assignments.ExerciseAssignment;
-import fr.univ_lille.gitlab.classrooms.classrooms.Classroom;
+import fr.univ_lille.gitlab.classrooms.classrooms.ClassroomEntity;
 import fr.univ_lille.gitlab.classrooms.users.ClassroomRole;
 import fr.univ_lille.gitlab.classrooms.users.ClassroomUser;
 import org.gitlab4j.api.GitLabApi;
@@ -50,7 +50,7 @@ class GitlabImplTest {
 
     @Test
     void getGroupURI_shouldGetTheURI_forAGivenClassroom() throws GitLabApiException {
-        var classroom = new Classroom();
+        var classroom = new ClassroomEntity();
         classroom.setGitlabGroupId(12L);
 
         var group = new Group();
@@ -65,7 +65,7 @@ class GitlabImplTest {
 
     @Test
     void createGroup_shouldCreateAGroup_forAGivenClassroom() throws GitLabApiException{
-        var classroom = new Classroom();
+        var classroom = new ClassroomEntity();
         classroom.setName("Test classroom");
 
         var group = new Group();
@@ -88,7 +88,7 @@ class GitlabImplTest {
 
     @Test
     void createGroup_shouldCreateAGroup_forAGivenExerciseAssignment() throws GitLabApiException{
-        var classroom = new Classroom();
+        var classroom = new ClassroomEntity();
         classroom.setName("Test classroom");
         classroom.setGitlabGroupId(12L);
 
@@ -128,7 +128,7 @@ class GitlabImplTest {
         group.setFullPath("my-group/path");
         when(gitLabApi.getGroupApi().getOptionalGroup(72L)).thenReturn(Optional.of(group));
 
-        var classroom = new Classroom();
+        var classroom = new ClassroomEntity();
         classroom.addTeacher(teacher);
         classroom.addAssignment(assignment);
 
@@ -167,7 +167,7 @@ class GitlabImplTest {
         var assignment = new ExerciseAssignment();
         assignment.setName("Exercice 1");
 
-        var classroom = new Classroom();
+        var classroom = new ClassroomEntity();
         classroom.addAssignment(assignment);
 
         assertThatThrownBy(() -> gitlab.createStudentProject(assignment, student))
@@ -192,7 +192,7 @@ class GitlabImplTest {
         group.setFullPath("my-group/path");
         when(gitLabApi.getGroupApi().getOptionalGroup(72L)).thenReturn(Optional.of(group));
 
-        var classroom = new Classroom();
+        var classroom = new ClassroomEntity();
         classroom.addTeacher(teacher);
         classroom.addAssignment(assignment);
 
@@ -228,7 +228,7 @@ class GitlabImplTest {
         group.setFullPath("my-group/path");
         when(gitLabApi.getGroupApi().getOptionalGroup(72L)).thenReturn(Optional.of(group));
 
-        var classroom = new Classroom();
+        var classroom = new ClassroomEntity();
         classroom.addTeacher(teacher);
         classroom.addAssignment(assignment);
 
@@ -263,7 +263,7 @@ class GitlabImplTest {
         group.setFullPath("my-group/path");
         when(gitLabApi.getGroupApi().getOptionalGroup(72L)).thenReturn(Optional.of(group));
 
-        var classroom = new Classroom();
+        var classroom = new ClassroomEntity();
         classroom.addTeacher(teacher);
         classroom.addAssignment(assignment);
 

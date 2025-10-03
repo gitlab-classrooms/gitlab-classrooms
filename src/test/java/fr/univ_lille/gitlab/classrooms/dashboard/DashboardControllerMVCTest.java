@@ -2,7 +2,7 @@ package fr.univ_lille.gitlab.classrooms.dashboard;
 
 import fr.univ_lille.gitlab.classrooms.assignments.AssignmentService;
 import fr.univ_lille.gitlab.classrooms.assignments.QuizAssignment;
-import fr.univ_lille.gitlab.classrooms.classrooms.Classroom;
+import fr.univ_lille.gitlab.classrooms.classrooms.ClassroomEntity;
 import fr.univ_lille.gitlab.classrooms.classrooms.ClassroomService;
 import fr.univ_lille.gitlab.classrooms.users.WithMockStudent;
 import fr.univ_lille.gitlab.classrooms.users.WithMockTeacher;
@@ -68,7 +68,7 @@ class DashboardControllerMVCTest {
 
         @Test
         void shouldListJoinedClassroomAndAssignmentResults() throws Exception {
-            var classroom = new Classroom();
+            var classroom = new ClassroomEntity();
             var assignment = new QuizAssignment();
             classroom.addAssignment(assignment);
 

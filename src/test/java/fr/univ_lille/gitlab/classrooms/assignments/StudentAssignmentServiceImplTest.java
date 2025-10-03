@@ -1,6 +1,6 @@
 package fr.univ_lille.gitlab.classrooms.assignments;
 
-import fr.univ_lille.gitlab.classrooms.classrooms.Classroom;
+import fr.univ_lille.gitlab.classrooms.classrooms.ClassroomEntity;
 import fr.univ_lille.gitlab.classrooms.users.ClassroomRole;
 import fr.univ_lille.gitlab.classrooms.users.ClassroomUser;
 import org.junit.jupiter.api.Test;
@@ -37,7 +37,7 @@ class StudentAssignmentServiceImplTest {
 
     @Test
     void getAllByClassroomAndStudent() {
-        var classroom = new Classroom();
+        var classroom = new ClassroomEntity();
         var student = new ClassroomUser();
 
         this.studentAssignmentService.getAllStudentExerciseAssignmentsForAClassroom(classroom, student);

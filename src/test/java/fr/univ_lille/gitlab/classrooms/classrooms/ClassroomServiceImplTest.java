@@ -29,8 +29,8 @@ class ClassroomServiceImplTest {
 
     @Test
     void getAllClassrooms_shouldReturnAllNonArchivedClassrooms() {
-        var activeClassroom = new Classroom();
-        var archiveClassroom = new Classroom();
+        var activeClassroom = new ClassroomEntity();
+        var archiveClassroom = new ClassroomEntity();
         archiveClassroom.setArchived(true);
         var allClassrooms = java.util.List.of(activeClassroom, archiveClassroom);
 
@@ -50,8 +50,8 @@ class ClassroomServiceImplTest {
     void getAllJoinedClassrooms_shouldReturnAllNonArchivedJoinedClassrooms() {
         var student = new ClassroomUser();
 
-        var activeClassroom = new Classroom();
-        var archiveClassroom = new Classroom();
+        var activeClassroom = new ClassroomEntity();
+        var archiveClassroom = new ClassroomEntity();
         archiveClassroom.setArchived(true);
         var allJoinedClassrooms = java.util.List.of(activeClassroom, archiveClassroom);
 
@@ -72,7 +72,7 @@ class ClassroomServiceImplTest {
         var student = new ClassroomUser();
         student.setName("luke.skywalker");
 
-        var classroom = new Classroom();
+        var classroom = new ClassroomEntity();
         classroom.setGitlabGroupId(12L);
 
         classroomService.joinClassroom(classroom, student);
@@ -89,7 +89,7 @@ class ClassroomServiceImplTest {
 
         classroomService.createClassroom("Test classroom", 12L, teacher);
 
-        var classroomCaptor = ArgumentCaptor.forClass(Classroom.class);
+        var classroomCaptor = ArgumentCaptor.forClass(ClassroomEntity.class);
 
         verify(gitlab).createGroup(classroomCaptor.capture(), eq(Optional.of(12L)));
 
@@ -104,7 +104,7 @@ class ClassroomServiceImplTest {
 
     @Test
     void archiveClassroom_shouldSetArchivedToTrue() {
-        var classroom = new Classroom();
+        var classroom = new ClassroomEntity();
         assertThat(classroom.isArchived()).isFalse();
 
         classroomService.archiveClassroom(classroom);
@@ -115,7 +115,7 @@ class ClassroomServiceImplTest {
 
     @Test
     void unarchiveClassroom_shouldSetArchivedToFalse() {
-        var classroom = new Classroom();
+        var classroom = new ClassroomEntity();
         classroom.setArchived(true);
         assertThat(classroom.isArchived()).isTrue();
 

@@ -1,6 +1,6 @@
 package fr.univ_lille.gitlab.classrooms.assignments;
 
-import fr.univ_lille.gitlab.classrooms.classrooms.Classroom;
+import fr.univ_lille.gitlab.classrooms.classrooms.ClassroomEntity;
 import fr.univ_lille.gitlab.classrooms.classrooms.ClassroomService;
 import fr.univ_lille.gitlab.classrooms.gitlab.GitLabException;
 import fr.univ_lille.gitlab.classrooms.gitlab.Gitlab;
@@ -58,7 +58,7 @@ class AssignmentControllerMVCTest {
 
     @BeforeEach
     void setUp() {
-        var classroom = new Classroom();
+        var classroom = new ClassroomEntity();
         classroom.setName("AssignmentControllerMVCTest classroom");
         classroom.setId(classroomId);
 
@@ -174,7 +174,7 @@ class AssignmentControllerMVCTest {
                 .andExpect(model().attributeExists("quizzes"))
                 .andExpect(model().attributeExists("repositories"));
 
-        verify(this.gitlab).getProjectTemplates(any(Classroom.class));
+        verify(this.gitlab).getProjectTemplates(any(ClassroomEntity.class));
     }
 
     @Test

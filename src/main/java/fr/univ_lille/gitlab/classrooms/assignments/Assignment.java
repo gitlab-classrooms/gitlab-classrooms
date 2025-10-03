@@ -1,6 +1,6 @@
 package fr.univ_lille.gitlab.classrooms.assignments;
 
-import fr.univ_lille.gitlab.classrooms.classrooms.Classroom;
+import fr.univ_lille.gitlab.classrooms.classrooms.ClassroomEntity;
 import fr.univ_lille.gitlab.classrooms.users.ClassroomUser;
 import jakarta.persistence.*;
 
@@ -25,7 +25,7 @@ public abstract class Assignment {
     private AssignmentType type;
 
     @ManyToOne
-    private Classroom classroom;
+    private ClassroomEntity classroom;
 
     private ZonedDateTime dueDate;
 
@@ -70,11 +70,11 @@ public abstract class Assignment {
         this.type = type;
     }
 
-    public Classroom getClassroom() {
+    public ClassroomEntity getClassroom() {
         return classroom;
     }
 
-    public void setClassroom(Classroom classroom) {
+    public void setClassroom(ClassroomEntity classroom) {
         this.classroom = classroom;
     }
 

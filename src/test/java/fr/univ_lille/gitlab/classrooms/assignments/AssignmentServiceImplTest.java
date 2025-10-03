@@ -1,6 +1,6 @@
 package fr.univ_lille.gitlab.classrooms.assignments;
 
-import fr.univ_lille.gitlab.classrooms.classrooms.Classroom;
+import fr.univ_lille.gitlab.classrooms.classrooms.ClassroomEntity;
 import fr.univ_lille.gitlab.classrooms.classrooms.ClassroomService;
 import fr.univ_lille.gitlab.classrooms.gitlab.GitLabException;
 import fr.univ_lille.gitlab.classrooms.gitlab.Gitlab;
@@ -83,7 +83,7 @@ class AssignmentServiceImplTest {
     void acceptExerciceAssignment_shouldCreateAGitlabProject() throws GitLabApiException, GitLabException {
         var teacher = new ClassroomUser();
 
-        var classroom = new Classroom();
+        var classroom = new ClassroomEntity();
         classroom.addTeacher(teacher);
 
         var assignment = new ExerciseAssignment();
@@ -120,7 +120,7 @@ class AssignmentServiceImplTest {
     void acceptAssignment_shouldUpdateGitlabInfo_ifExerciseAssignmentIsAlreadyAccepted() throws GitLabApiException, GitLabException {
         var teacher = new ClassroomUser();
 
-        var classroom = new Classroom();
+        var classroom = new ClassroomEntity();
         classroom.addTeacher(teacher);
 
         var assignment = new ExerciseAssignment();
@@ -156,7 +156,7 @@ class AssignmentServiceImplTest {
         var quiz = new QuizEntity();
         when(quizService.getQuiz("Test Quiz")).thenReturn(Optional.of(quiz));
 
-        var classroom = new Classroom();
+        var classroom = new ClassroomEntity();
         var assignment = this.assignmentService.createQuizAssignment(classroom, "Test Quiz Assignment", "Test Quiz");
 
         assertThat(assignment)
@@ -175,7 +175,7 @@ class AssignmentServiceImplTest {
 
     @Test
     void createExerciseAssignment_shouldCreateAGitlabGroup_andSaveTheClassroom() throws GitLabApiException {
-        var classroom = new Classroom();
+        var classroom = new ClassroomEntity();
         classroom.setGitlabGroupId(9L);
         var assignment = this.assignmentService.createExerciseAssignment(classroom, "Test Exercise Assignment", null);
 
@@ -213,7 +213,7 @@ class AssignmentServiceImplTest {
 
     @Test
     void getAssignmentResultsForAClassroom_shouldReturnTheStudentAssignmentResults() {
-        var classroom = new Classroom();
+        var classroom = new ClassroomEntity();
         var student = new ClassroomUser();
 
         this.assignmentService.getAllStudentAssignmentsForAClassroom(classroom, student);

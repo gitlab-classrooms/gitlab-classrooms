@@ -1,6 +1,6 @@
 package fr.univ_lille.gitlab.classrooms.assignments;
 
-import fr.univ_lille.gitlab.classrooms.classrooms.Classroom;
+import fr.univ_lille.gitlab.classrooms.classrooms.ClassroomEntity;
 import fr.univ_lille.gitlab.classrooms.classrooms.ClassroomService;
 import fr.univ_lille.gitlab.classrooms.gitlab.GitLabException;
 import fr.univ_lille.gitlab.classrooms.gitlab.Gitlab;
@@ -95,7 +95,7 @@ class AssignmentServiceImpl implements AssignmentService {
 
     @Override
     @Transactional
-    public Assignment createQuizAssignment(Classroom classroom, String assignmentName, String quizName){
+    public Assignment createQuizAssignment(ClassroomEntity classroom, String assignmentName, String quizName){
         var quiz = this.quizService.getQuiz(quizName).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         var quizAssignment = new QuizAssignment();
@@ -112,7 +112,7 @@ class AssignmentServiceImpl implements AssignmentService {
 
     @Override
     @Transactional
-    public Assignment createExerciseAssignment(Classroom classroom, String assignmentName, String repositoryId) throws GitLabApiException {
+    public Assignment createExerciseAssignment(ClassroomEntity classroom, String assignmentName, String repositoryId) throws GitLabApiException {
         var exerciseAssignment = new ExerciseAssignment();
         exerciseAssignment.setName(assignmentName);
         exerciseAssignment.setGitlabRepositoryTemplateId(repositoryId);
@@ -133,7 +133,7 @@ class AssignmentServiceImpl implements AssignmentService {
     }
 
     @Override
-    public List<StudentAssignment> getAllStudentAssignmentsForAClassroom(Classroom classroom, ClassroomUser student) {
+    public List<StudentAssignment> getAllStudentAssignmentsForAClassroom(ClassroomEntity classroom, ClassroomUser student) {
         return this.studentAssignmentRepository.findByAssignmentClassroomAndStudent(classroom, student);
     }
 }

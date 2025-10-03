@@ -9,32 +9,32 @@ import java.util.UUID;
 
 public interface ClassroomService {
 
-    List<Classroom> getAllClassrooms();
+    List<ClassroomEntity> getAllClassrooms();
 
     /**
      * Returns all the classrooms the student has joined
      * @param student the student
      * @return a list of classrooms
      */
-    List<Classroom> getAllJoinedClassrooms(ClassroomUser student);
+    List<ClassroomEntity> getAllJoinedClassrooms(ClassroomUser student);
 
-    Optional<Classroom> getClassroom(UUID uuid);
+    Optional<ClassroomEntity> getClassroom(UUID uuid);
 
-    void joinClassroom(Classroom classroom, ClassroomUser student);
+    void joinClassroom(ClassroomEntity classroom, ClassroomUser student);
 
     void createClassroom(String classroomName, Long parentGitlabGroupId, ClassroomUser teacher) throws GitLabApiException;
 
-    void saveClassroom(Classroom classroom);
+    void saveClassroom(ClassroomEntity classroom);
 
     /**
      * Archives a classroom
      * @param classroom the classroom to archive
      */
-    void archiveClassroom(Classroom classroom);
+    void archiveClassroom(ClassroomEntity classroom);
 
     /**
      * Unarchives a classroom
      * @param classroom the classroom to unarchive
      */
-    void unarchiveClassroom(Classroom classroom);
+    void unarchiveClassroom(ClassroomEntity classroom);
 }
