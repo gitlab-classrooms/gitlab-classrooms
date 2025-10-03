@@ -1,5 +1,7 @@
-package fr.univ_lille.gitlab.classrooms.domain.classrooms;
+package fr.univ_lille.gitlab.classrooms.mvc;
 
+import fr.univ_lille.gitlab.classrooms.domain.classrooms.Classroom;
+import fr.univ_lille.gitlab.classrooms.domain.classrooms.ClassroomService;
 import fr.univ_lille.gitlab.classrooms.gitlab.Gitlab;
 import fr.univ_lille.gitlab.classrooms.users.ClassroomUser;
 import fr.univ_lille.gitlab.classrooms.users.WithMockStudent;
