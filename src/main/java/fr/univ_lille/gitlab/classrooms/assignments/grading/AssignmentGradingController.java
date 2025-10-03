@@ -32,7 +32,7 @@ class AssignmentGradingController {
      * Submits a JUnit report file to an assignment for grading.
      * Multiple different JUnit reports can be submitted and will be added to the grade.
      * @param authenticationPrincipal The principal <b>MUST</b> be a Gitlab ID Token, to identify the Gitlab Project ID
-     * @param student The student submitting its assignment, computed from the token in {@link fr.univ_lille.gitlab.classrooms.users.UserControllerAdvice}
+     * @param student The student submitting its assignment, computed from the token
      * @param testResultsFile The XML test result file, in the JUnit format
      * @throws IOException if the XML test result file cannot be read
      */

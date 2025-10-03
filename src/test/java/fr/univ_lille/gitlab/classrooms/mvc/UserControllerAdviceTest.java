@@ -1,5 +1,8 @@
-package fr.univ_lille.gitlab.classrooms.users;
+package fr.univ_lille.gitlab.classrooms.mvc;
 
+import fr.univ_lille.gitlab.classrooms.users.ClassroomRole;
+import fr.univ_lille.gitlab.classrooms.users.ClassroomUser;
+import fr.univ_lille.gitlab.classrooms.users.ClassroomUserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -15,7 +18,6 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)

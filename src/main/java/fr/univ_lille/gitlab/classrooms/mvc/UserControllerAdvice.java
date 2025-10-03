@@ -1,5 +1,7 @@
-package fr.univ_lille.gitlab.classrooms.users;
+package fr.univ_lille.gitlab.classrooms.mvc;
 
+import fr.univ_lille.gitlab.classrooms.users.ClassroomUser;
+import fr.univ_lille.gitlab.classrooms.users.ClassroomUserService;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -8,11 +10,11 @@ import java.security.Principal;
 import java.util.NoSuchElementException;
 
 @ControllerAdvice({"fr.univ_lille.gitlab.classrooms", "org.springframework.boot.autoconfigure.web.servlet.error"})
-public class UserControllerAdvice {
+class UserControllerAdvice {
 
     private final ClassroomUserService classroomUserService;
 
-    public UserControllerAdvice(ClassroomUserService classroomUserService) {
+    UserControllerAdvice(ClassroomUserService classroomUserService) {
         this.classroomUserService = classroomUserService;
     }
 
