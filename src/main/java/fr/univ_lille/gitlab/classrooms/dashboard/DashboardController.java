@@ -2,7 +2,7 @@ package fr.univ_lille.gitlab.classrooms.dashboard;
 
 import fr.univ_lille.gitlab.classrooms.assignments.AssignmentService;
 import fr.univ_lille.gitlab.classrooms.assignments.StudentAssignment;
-import fr.univ_lille.gitlab.classrooms.classrooms.ClassroomEntity;
+import fr.univ_lille.gitlab.classrooms.adapters.jpa.ClassroomEntity;
 import fr.univ_lille.gitlab.classrooms.classrooms.ClassroomService;
 import fr.univ_lille.gitlab.classrooms.users.ClassroomUser;
 import jakarta.annotation.security.PermitAll;

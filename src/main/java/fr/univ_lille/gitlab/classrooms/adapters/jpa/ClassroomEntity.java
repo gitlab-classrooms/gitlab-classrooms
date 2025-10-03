@@ -1,4 +1,4 @@
-package fr.univ_lille.gitlab.classrooms.classrooms;
+package fr.univ_lille.gitlab.classrooms.adapters.jpa;
 
 import fr.univ_lille.gitlab.classrooms.assignments.Assignment;
 import fr.univ_lille.gitlab.classrooms.users.ClassroomUser;

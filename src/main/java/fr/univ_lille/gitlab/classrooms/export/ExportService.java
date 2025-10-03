@@ -1,6 +1,6 @@
 package fr.univ_lille.gitlab.classrooms.export;
 
-import fr.univ_lille.gitlab.classrooms.classrooms.ClassroomEntity;
+import fr.univ_lille.gitlab.classrooms.adapters.jpa.ClassroomEntity;
 
 import java.util.List;
 

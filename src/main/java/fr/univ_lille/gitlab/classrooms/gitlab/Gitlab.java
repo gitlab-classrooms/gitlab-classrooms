@@ -2,7 +2,7 @@ package fr.univ_lille.gitlab.classrooms.gitlab;
 
 import fr.univ_lille.gitlab.classrooms.assignments.ExerciseAssignment;
 import fr.univ_lille.gitlab.classrooms.assignments.StudentExerciseAssignment;
-import fr.univ_lille.gitlab.classrooms.classrooms.ClassroomEntity;
+import fr.univ_lille.gitlab.classrooms.adapters.jpa.ClassroomEntity;
 import fr.univ_lille.gitlab.classrooms.users.ClassroomUser;
 import org.gitlab4j.api.GitLabApiException;
 import org.gitlab4j.api.models.Group;

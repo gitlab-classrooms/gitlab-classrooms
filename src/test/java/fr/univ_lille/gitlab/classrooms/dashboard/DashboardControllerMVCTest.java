@@ -2,7 +2,7 @@ package fr.univ_lille.gitlab.classrooms.dashboard;
 
 import fr.univ_lille.gitlab.classrooms.assignments.AssignmentService;
 import fr.univ_lille.gitlab.classrooms.assignments.QuizAssignment;
-import fr.univ_lille.gitlab.classrooms.classrooms.ClassroomEntity;
+import fr.univ_lille.gitlab.classrooms.adapters.jpa.ClassroomEntity;
 import fr.univ_lille.gitlab.classrooms.classrooms.ClassroomService;
 import fr.univ_lille.gitlab.classrooms.users.WithMockStudent;
 import fr.univ_lille.gitlab.classrooms.users.WithMockTeacher;

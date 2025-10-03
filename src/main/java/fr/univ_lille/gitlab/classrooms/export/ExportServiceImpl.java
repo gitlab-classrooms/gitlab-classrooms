@@ -1,7 +1,7 @@
 package fr.univ_lille.gitlab.classrooms.export;
 
 import fr.univ_lille.gitlab.classrooms.assignments.*;
-import fr.univ_lille.gitlab.classrooms.classrooms.ClassroomEntity;
+import fr.univ_lille.gitlab.classrooms.adapters.jpa.ClassroomEntity;
 import fr.univ_lille.gitlab.classrooms.users.ClassroomUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

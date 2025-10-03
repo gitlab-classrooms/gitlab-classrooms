@@ -1,5 +1,6 @@
 package fr.univ_lille.gitlab.classrooms.classrooms;
 
+import fr.univ_lille.gitlab.classrooms.adapters.jpa.ClassroomEntity;
 import fr.univ_lille.gitlab.classrooms.users.ClassroomUser;
 import org.gitlab4j.api.GitLabApiException;
 
