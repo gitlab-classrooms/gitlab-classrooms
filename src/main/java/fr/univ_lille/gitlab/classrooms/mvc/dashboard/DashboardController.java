@@ -1,4 +1,4 @@
-package fr.univ_lille.gitlab.classrooms.dashboard;
+package fr.univ_lille.gitlab.classrooms.mvc.dashboard;
 
 import fr.univ_lille.gitlab.classrooms.assignments.AssignmentService;
 import fr.univ_lille.gitlab.classrooms.assignments.StudentAssignment;
