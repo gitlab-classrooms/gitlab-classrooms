@@ -1,0 +1,49 @@
+package fr.univ_lille.gitlab.classrooms.adapters.jpa;
+
+import fr.univ_lille.gitlab.classrooms.classrooms.Classroom;
+import fr.univ_lille.gitlab.classrooms.classrooms.ClassroomRepository;
+import fr.univ_lille.gitlab.classrooms.users.ClassroomUser;
+import org.springframework.stereotype.Component;
+
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+/**
+ * Adapter that implements the domain ClassroomRepository by delegating to the Spring Data JPA repository.
+ */
+@Component
+class ClassroomAdapter implements ClassroomRepository {
+
+    private final ClassroomJPARepository jpaRepository;
+
+    private final ClassroomEntityMapper classroomEntityMapper;
+
+    ClassroomAdapter(ClassroomJPARepository jpaRepository, ClassroomEntityMapper classroomEntityMapper) {
+        this.jpaRepository = jpaRepository;
+        this.classroomEntityMapper = classroomEntityMapper;
+    }
+
+    @Override
+    public Collection<Classroom> findAll() {
+        return jpaRepository.findAll()
+                .stream().map(classroomEntityMapper::toClassroom)
+                .toList();
+    }
+
+    @Override
+    public List<ClassroomEntity> findClassroomByStudentsContains(ClassroomUser student) {
+        return jpaRepository.findClassroomByStudentsContains(student);
+    }
+
+    @Override
+    public Optional<ClassroomEntity> findById(UUID uuid) {
+        return jpaRepository.findById(uuid);
+    }
+
+    @Override
+    public ClassroomEntity save(ClassroomEntity classroom) {
+        return jpaRepository.save(classroom);
+    }
+}

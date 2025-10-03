@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public interface ClassroomService {
 
-    List<ClassroomEntity> getAllClassrooms();
+    List<Classroom> getAllClassrooms();
 
     /**
      * Returns all the classrooms the student has joined

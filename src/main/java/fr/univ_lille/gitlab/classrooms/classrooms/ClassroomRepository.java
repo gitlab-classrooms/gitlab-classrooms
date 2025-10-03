@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public interface ClassroomRepository {
 
-    Collection<ClassroomEntity> findAll();
+    Collection<Classroom> findAll();
 
     List<ClassroomEntity> findClassroomByStudentsContains(ClassroomUser student);
 

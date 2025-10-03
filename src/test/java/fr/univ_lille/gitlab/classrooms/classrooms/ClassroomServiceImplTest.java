@@ -30,8 +30,8 @@ class ClassroomServiceImplTest {
 
     @Test
     void getAllClassrooms_shouldReturnAllNonArchivedClassrooms() {
-        var activeClassroom = new ClassroomEntity();
-        var archiveClassroom = new ClassroomEntity();
+        var activeClassroom = new Classroom();
+        var archiveClassroom = new Classroom();
         archiveClassroom.setArchived(true);
         var allClassrooms = java.util.List.of(activeClassroom, archiveClassroom);
 

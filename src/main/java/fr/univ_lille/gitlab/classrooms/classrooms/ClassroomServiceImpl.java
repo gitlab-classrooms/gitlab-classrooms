@@ -24,7 +24,7 @@ class ClassroomServiceImpl implements ClassroomService {
     }
 
     @Override
-    public List<ClassroomEntity> getAllClassrooms() {
+    public List<Classroom> getAllClassrooms() {
         return this.classroomRepository.findAll().stream()
                 .filter(classroom -> !classroom.isArchived())
                 .toList();
