@@ -1,5 +1,5 @@
 package fr.univ_lille.gitlab.classrooms.assignments;
 
-enum AssignmentType {
+public enum AssignmentType {
     QUIZ, EXERCISE
 }

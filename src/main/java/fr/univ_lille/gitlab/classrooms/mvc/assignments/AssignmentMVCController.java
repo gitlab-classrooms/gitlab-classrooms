@@ -1,5 +1,9 @@
-package fr.univ_lille.gitlab.classrooms.assignments;
+package fr.univ_lille.gitlab.classrooms.mvc.assignments;
 
+import fr.univ_lille.gitlab.classrooms.assignments.AssignmentService;
+import fr.univ_lille.gitlab.classrooms.assignments.AssignmentType;
+import fr.univ_lille.gitlab.classrooms.assignments.ExerciseAssignment;
+import fr.univ_lille.gitlab.classrooms.assignments.QuizAssignment;
 import fr.univ_lille.gitlab.classrooms.domain.classrooms.ClassroomService;
 import fr.univ_lille.gitlab.classrooms.gitlab.GitLabException;
 import fr.univ_lille.gitlab.classrooms.gitlab.Gitlab;
@@ -23,7 +27,7 @@ import java.util.UUID;
 
 @Controller
 @RolesAllowed("STUDENT")
-class AssignmentController {
+class AssignmentMVCController {
 
     private final AssignmentService assignmentService;
 
@@ -33,9 +37,9 @@ class AssignmentController {
 
     private final Gitlab gitlab;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AssignmentController.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(AssignmentMVCController.class.getName());
 
-    AssignmentController(AssignmentService assignmentService, QuizService quizService, ClassroomService classroomService, Gitlab gitlab) {
+    AssignmentMVCController(AssignmentService assignmentService, QuizService quizService, ClassroomService classroomService, Gitlab gitlab) {
         this.assignmentService = assignmentService;
         this.quizService = quizService;
         this.classroomService = classroomService;

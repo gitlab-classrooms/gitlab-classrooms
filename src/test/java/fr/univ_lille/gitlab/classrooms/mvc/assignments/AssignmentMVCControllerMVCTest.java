@@ -1,6 +1,10 @@
-package fr.univ_lille.gitlab.classrooms.assignments;
+package fr.univ_lille.gitlab.classrooms.mvc.assignments;
 
 import fr.univ_lille.gitlab.classrooms.adapters.jpa.ClassroomEntity;
+import fr.univ_lille.gitlab.classrooms.assignments.AssignmentService;
+import fr.univ_lille.gitlab.classrooms.assignments.ExerciseAssignment;
+import fr.univ_lille.gitlab.classrooms.assignments.QuizAssignment;
+import fr.univ_lille.gitlab.classrooms.assignments.StudentExerciseAssignment;
 import fr.univ_lille.gitlab.classrooms.domain.classrooms.Classroom;
 import fr.univ_lille.gitlab.classrooms.domain.classrooms.ClassroomService;
 import fr.univ_lille.gitlab.classrooms.gitlab.GitLabException;
@@ -35,7 +39,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @Sql("/sql/init-test-users.sql")
-class AssignmentControllerMVCTest {
+class AssignmentMVCControllerMVCTest {
 
     @Autowired
     private MockMvc mockMvc;
