@@ -25,7 +25,13 @@
         <span th:text="${studentAssignment.assignment.name}">Exercise 1</span>
     </a>
     <div th:if="${studentAssignment.submissionDate!=null}" class="flex justify-between items-center">
-        <div class="pl-2" th:text="'Score : ' + ${studentAssignment.score} + ' / ' + ${studentAssignment.maxScore}">8/10</div>
+        <div class="pl-2">
+            <div th:text="'Score : ' + ${studentAssignment.score} + ' / ' + ${studentAssignment.maxScore}">8/10</div>
+            <div class="text-xs text-dark-7 mt-1"
+                 th:text="${#temporals.format(studentAssignment.localizedSubmissionDate, 'dd MMMM yyyy à HH:mm', #locale.FRENCH)}">
+                14 novembre 2025 à 15:31
+            </div>
+        </div>
         <form
                 th:action="@{/assignments/{assignmentId}/students/{studentId}/reset(assignmentId=${studentAssignment.assignment.id}, studentId=${studentAssignment.student.name})}" method="post">
             <button type="submit" class="btn-secondary">
