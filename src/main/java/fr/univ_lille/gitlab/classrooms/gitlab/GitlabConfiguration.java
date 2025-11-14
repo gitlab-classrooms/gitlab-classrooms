@@ -1,6 +1,6 @@
 package fr.univ_lille.gitlab.classrooms.gitlab;
 
-import org.gitlab4j.api.Constants;
+import org.gitlab4j.models.Constants;
 import org.gitlab4j.api.GitLabApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
