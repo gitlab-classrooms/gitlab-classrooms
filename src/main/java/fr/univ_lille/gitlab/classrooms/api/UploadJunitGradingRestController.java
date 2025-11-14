@@ -1,6 +1,8 @@
-package fr.univ_lille.gitlab.classrooms.assignments.grading;
+package fr.univ_lille.gitlab.classrooms.api;
 
 import fr.univ_lille.gitlab.classrooms.assignments.StudentAssignmentService;
+import fr.univ_lille.gitlab.classrooms.assignments.grading.AssignmentGradeService;
+import fr.univ_lille.gitlab.classrooms.assignments.grading.AssignmentGradingException;
 import fr.univ_lille.gitlab.classrooms.users.ClassroomUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,15 +17,15 @@ import java.security.Principal;
 
 @RestController
 @RequestMapping("/api/assignments/")
-class AssignmentGradingController {
+class UploadJunitGradingRestController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AssignmentGradingController.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(UploadJunitGradingRestController.class.getName());
 
     private final StudentAssignmentService studentAssignmentService;
 
     private final AssignmentGradeService assignmentGradeService;
 
-    AssignmentGradingController(StudentAssignmentService studentAssignmentService, AssignmentGradeService assignmentGradeService) {
+    UploadJunitGradingRestController(StudentAssignmentService studentAssignmentService, AssignmentGradeService assignmentGradeService) {
         this.studentAssignmentService = studentAssignmentService;
         this.assignmentGradeService = assignmentGradeService;
     }

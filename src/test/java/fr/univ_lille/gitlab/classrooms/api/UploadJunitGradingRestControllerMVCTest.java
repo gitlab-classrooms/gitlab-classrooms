@@ -1,7 +1,8 @@
-package fr.univ_lille.gitlab.classrooms.assignments.grading;
+package fr.univ_lille.gitlab.classrooms.api;
 
 import fr.univ_lille.gitlab.classrooms.assignments.StudentAssignmentService;
 import fr.univ_lille.gitlab.classrooms.assignments.StudentExerciseAssignment;
+import fr.univ_lille.gitlab.classrooms.assignments.grading.AssignmentGradeService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @Sql("/sql/init-test-users.sql")
-class AssignmentGradingControllerMVCTest {
+class UploadJunitGradingRestControllerMVCTest {
 
     @Autowired
     private MockMvc mockMvc;
