@@ -1,32 +1,32 @@
-package fr.univ_lille.gitlab.classrooms.assignments;
+package fr.univ_lille.gitlab.classrooms.api;
 
+import fr.univ_lille.gitlab.classrooms.assignments.AssignmentService;
+import fr.univ_lille.gitlab.classrooms.assignments.StudentExerciseAssignment;
 import jakarta.annotation.security.RolesAllowed;
 import org.gitlab4j.api.GitLabApi;
 import org.gitlab4j.api.GitLabApiException;
 import org.gitlab4j.api.models.Project;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-@Controller
+@RestController
 @RolesAllowed("TEACHER")
-class ExerciseAssignmentRestController {
+class ExportCloneScriptRestController {
 
     private final AssignmentService assignmentService;
 
     private final GitLabApi gitlab;
 
-    ExerciseAssignmentRestController(AssignmentService assignmentService, GitLabApi gitlab) {
+    ExportCloneScriptRestController(AssignmentService assignmentService, GitLabApi gitlab) {
         this.assignmentService = assignmentService;
         this.gitlab = gitlab;
     }
 
     @GetMapping(value = "/assignments/{id}/clone-script", produces = "text/plain")
-    @ResponseBody
     String buildGitlabCloneScript(@PathVariable UUID id) {
         var assignment = this.assignmentService.getAssignment(id).orElseThrow();
 
