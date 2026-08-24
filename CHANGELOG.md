@@ -1,5 +1,135 @@
 # Changelog
 
+<a name="0.4.3"></a>
+## 0.4.3 (2026-08-24)
+
+### Added
+
+- ✅ : add testcontainer test for postgresql jpa adapter [721a61e]
+- ➕ : add testcontainers postgresql dependency [a6997e8]
+- ✨ : add csv export for assignment results [6dffd6c]
+- ✨ : add copy students emails button to classroom view [fe77463]
+- ✨ : add retakes column to quiz submissions table [6ab8417]
+- ✨ : add &#x60;GitLabAuthenticationException&#x60; to handle authentication-specific errors in GitLab integration [041f4e2]
+- ✨ : exclude archived quizzes [379101a]
+- ✨ : add archived column to quiz entity [88bd58f]
+- ✅ : add tests for classroom archiving by role [29543c3]
+- ✨ : archive a classroom [74929f6]
+- ✅ : correct failing architecture tests [564b6c1]
+- ✨ : save assignment status [b58dde4]
+- 🔊 : add logs when archiving assignment [d1e4eef]
+- ✨ : add scheduling configuration [e3a8241]
+- ✨ : auto-archive assignments with due date [3a30c58]
+- ✨ : archive exercices [04a206b]
+- ✨ : use local tailwind css [79ea2c6]
+- ✨ : configure tailwind the right way [f71b142]
+- ✨ : add gitlab clone url to saved data [9c34d9f]
+- ✨ : add export route [37a4ea6]
+- ➕ : add mustache dependency [dd3c298]
+- ✨ : add mustache template for export script [c3a2a61]
+- ✨ : generate export script for a Classroom [b4a6c3e]
+
+### Changed
+
+- ⬆️ : bump junit-jupiter version to 6.0.0 [235b1a5]
+- ⬆️ : bump spring-boot-starter-parent to 3.5.6 [29a46f1]
+- 💄 : update average score formatting in submissions view [4ab01fe]
+- 💄 : update template styles to use new utility classes and standardized color palette [c990133]
+- 💄 : update quiz icons to use new &#x60;question.svg&#x60; asset [cec3839]
+- 💄 : replace SVG elements with external icon assets in assignment cards [83ef871]
+- ⬆️ : add flyway-database-postgresql dependency in pom.xml [3c4b6ac]
+- ⬆️ : bump archunit to version 1.4.1 [287fd47]
+- ⬆️ : bump jacoco-maven-plugin to version 0.8.13 [2fe0711]
+- ⬆️ : bump spring-boot-starter-parent to 3.5.5 [b8441ff]
+- ⬆️ : bump gitlab4j-api to version 6.1.0 [b07444b]
+- 💄 : update quiz edit form with streamlined styles and utility classes [4cb684b]
+- 💄 : update quiz list with streamlined styles and reusable components [cb6070f]
+- 🎨 : simplify button styles in new classroom form [59fa8eb]
+- 🎨 : update styles for new classroom form inputs [808399b]
+- 🚚 : move docs to its own repository [61ba23d]
+- 💄 : style new assignment page [75d6725]
+- ⚡ : only load classroom project templates [c98e4d9]
+- 💄 : update reset grade button style [a797fa9]
+- 🚨 : fix linter warnings [40a6da1]
+- 💄 : answer quiz [f584a2f]
+- 💄 : join &amp; accept pages [e4c9f82]
+- 💄 : classroom student view [88964b2]
+- 💄 : layout without menu [b120fb5]
+- 💄 : quiz submissions screen [fb30867]
+- 💄 : exercice submissions screen [d06a196]
+- 💄 : re-generate stylesheet [2d10334]
+- 💄 : finish classroom view [877e541]
+- 💄 : use different icons for assignment types [39f90c6]
+- 💄 : add intermediate sizes [dab1ea4]
+- ⬆️ : bump spring-boot-starter-parent to 3.2.3 [45bdea8]
+- 💄 : implement assignment card [7cf70f9]
+- 💄 : add student-card component [402f134]
+- 💄 : empty teacher dashboard [8939cab]
+- 💄 : add error alert on login page when login fails [79f282e]
+- 💄 : classroom dashboard screen [dca3fcb]
+- 💄 : configure primary button component [d1961cf]
+- 💄 : setup spacing [7d449b8]
+- 💄 : apply colors to login page [62ea1ec]
+- 💄 : setup background colors [e1e340d]
+- 🔧 : add watch script [1022e63]
+- 💄 : configure custom colors [dfae700]
+- ⬆️ : bump spring-boot-starter-parent to 3.2.2 [592564e]
+- 💄 : set font sizes according to typography recommendations [345d174]
+- 💄 : use Noto Sans font [2e4487a]
+- ♻️ : refactor assignment accept [b12c564]
+- 🚨 : join these multiple assertions subject to one assertion chain [def282b]
+- 🚨 : correct either log this exception and handle it, or rethrow it with some contextual information [a264914]
+- ♻️ : use gitlab clone url from exercise assignment [2a28fd8]
+- ♻️ : enforce slf4j usage for loggers [33d9eb0]
+- ⬆️ : bump spring-boot-starter-parent to 3.2.1 [5428b17]
+- ⬆️ : bump archunit to 1.2.1 [22d828a]
+
+### Removed
+
+- 🔥 : remove logger from AutoArchiveJob [545e15d]
+- 🔥 : remove unused api key filter chain configuration [493c98c]
+- 🔥 : remove unused ExportException [807da56]
+- 🔥 : remove gitlab access to get clone url [5a08c66]
+- 🔥 : remove naive implementation [a2c5f6b]
+
+### Fixed
+
+- 🐛 : use group full path to search template group [918756a]
+- 🐛 : handle missing access token in &#x60;userGitlabApi&#x60; and improve error logging [fb9af62]
+- 🐛 : add missing &#x60;alt&#x60; attributes to icons in student assignment card template [30cdf17]
+- 🐛 : fix incorrect parameter mapping in reset grade action [b86408d]
+- 🐛 : disable tomcat redirect to ease SSL termination [5e78d26]
+- 🐛 : add X-Forwarded-* headers support [330e67a]
+- 🐛 : update docs link [c50c468]
+- 🐛 : use teacher authentication token to archive projects [6ac725a]
+- 🐛 : add default value for auto_archive [ed9beeb]
+- 🐛 : correct duplicated flyway migration [ae65ae8]
+- 🐛 : correct icons urls [c488120]
+- 🐛 : expose css and fonts for unauthenticated users [f72c94e]
+- 🐛 : only load exercise assignments when exporting clone script [8f4b143]
+
+### Security
+
+- 🔒 : enforce security rules on controller methods [b725355]
+
+### Miscellaneous
+
+- 🔀 : Merge branch &#x27;feature/archive-exercises&#x27; into develop [27d47a5]
+- 🔀 : merge tag &#x27;0.4.2&#x27; into develop [0eff16c]
+- 🔀 : merge tag &#x27;0.4.1&#x27; into develop [cbd7d45]
+- 🔀 : merge tag &#x27;0.4.0&#x27; into develop [f38b7cb]
+- 🔀 : merge branch &#x27;main&#x27; into develop [f90ab33]
+- 🔀 : merge branch &#x27;main&#x27; into develop [f0492e7]
+- 🔀 : merge branch &#x27;feature/teacher-dashboard&#x27; into develop [9cb8a67]
+- 🚧 : classroom details view [1639237]
+- 🔀 : merge branch &#x27;feature/colors&#x27; into develop [f241df7]
+- 🔀 : merge branch &#x27;feature/typography&#x27; into develop [3bc6121]
+- 🔀 : merge branch &#x27;feature/tailwind-integration&#x27; into develop [f7a611b]
+- 🔀 : merge branch &#x27;feature/clone-script&#x27; into develop [9daaa53]
+- 📝 : add use-cases diagrams [9102025]
+- 🔀 : merge tag &#x27;0.3.1&#x27; into develop [6194347]
+
+
 <a name="0.4.2"></a>
 ## 0.4.2 (2024-09-11)
 
