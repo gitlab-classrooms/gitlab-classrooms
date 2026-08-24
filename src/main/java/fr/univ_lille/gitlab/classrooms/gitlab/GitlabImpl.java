@@ -32,7 +32,7 @@ class GitlabImpl implements Gitlab {
     @Override
     public List<Project> getProjectTemplates(Classroom classroom) throws GitLabApiException {
         var group = this.gitLabApi.getGroupApi().getGroup(classroom.getGitlabGroupId());
-        var templateGroup = this.gitLabApi.getGroupApi().getGroups(group.getPath()+"/templates");
+        var templateGroup = this.gitLabApi.getGroupApi().getGroups(group.getFullPath()+"/templates");
         if(templateGroup.isEmpty()){
             return List.of();
         }
