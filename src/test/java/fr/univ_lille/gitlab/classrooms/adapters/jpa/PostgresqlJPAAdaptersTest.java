@@ -3,6 +3,7 @@ package fr.univ_lille.gitlab.classrooms.adapters.jpa;
 import jakarta.persistence.EntityManagerFactory;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -18,6 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 @DataJpaTest
 @TestPropertySource(properties = {"spring.flyway.enabled=true", "spring.jpa.generate-ddl=false", "spring.jpa.hibernate.ddl-auto=validate"})
+@Disabled("docker client is too old")
 class PostgresqlJPAAdaptersTest {
 
     static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:18-alpine");
