@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.*;
+import org.springframework.security.oauth2.client.endpoint.RestClientRefreshTokenTokenResponseClient;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
@@ -17,8 +18,11 @@ import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
 import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.util.Map;
 
 @EnableWebSecurity
 @EnableMethodSecurity(jsr250Enabled = true)
@@ -84,7 +88,13 @@ public class WebSecurityConfiguration implements WebMvcConfigurer {
         OAuth2AuthorizedClientProvider authorizedClientProvider =
                 OAuth2AuthorizedClientProviderBuilder.builder()
                         .authorizationCode()
-                        .refreshToken()
+                        .refreshToken(
+                                builder -> {
+                                    var gitlabResponseClient = new RestClientRefreshTokenTokenResponseClient();
+                                    gitlabResponseClient.addParametersConverter(source -> MultiValueMap.fromSingleValue(Map.of("redirect_uri", source.getClientRegistration().getRedirectUri())));
+                                    builder.accessTokenResponseClient(gitlabResponseClient);
+                                }
+                        )
                         .build();
 
         AuthorizedClientServiceOAuth2AuthorizedClientManager authorizedClientManager =
