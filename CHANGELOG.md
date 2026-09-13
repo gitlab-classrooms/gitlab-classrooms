@@ -1,5 +1,18 @@
 # Changelog
 
+<a name="0.4.4"></a>
+## 0.4.4 (2026-09-13)
+
+### Added
+
+- ✅ : disable docker test (client is too old) [fbad342]
+
+### Fixed
+
+- 🐛 : correct refresh-token pre-requisites [cd61f2e]
+- 🐛 : customize the gitlab request for refresh_token [72120a6]
+
+
 <a name="0.4.3"></a>
 ## 0.4.3 (2026-08-24)
 
